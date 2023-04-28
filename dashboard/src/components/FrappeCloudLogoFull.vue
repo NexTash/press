@@ -1,3 +1,3 @@
 <template>
-	<img src="../assets/nextash-logo.png" alt="Jirlie Logo">
+	<img src="../assets/Jirlie-logo.png" alt="Jirlie Logo">
 </template>
