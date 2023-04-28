@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div>
-			<PageHeader title="Sites" subtitle="Your NexTash instances">
+			<PageHeader title="Sites" subtitle="Your Jirlie instances">
 				<template v-if="this.$account.team.enabled" v-slot:actions>
 					<Button
 						appearance="primary"
