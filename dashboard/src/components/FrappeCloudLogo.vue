@@ -1,3 +1,3 @@
 <template>
-	<img src="../assets/logo.webp" alt="Jirlie Logo">
+	<img src="../assets/logo.gif" alt="Jirlie Logo">
 </template>
