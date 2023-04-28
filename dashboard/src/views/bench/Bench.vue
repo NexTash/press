@@ -45,7 +45,7 @@ export default {
 	name: 'Bench',
 	pageMeta() {
 		return {
-			title: `Bench - ${this.bench?.title || 'Private'} - NexTash Cloud`
+			title: `Bench - ${this.bench?.title || 'Private'} - Jirlie Cloud`
 		};
 	},
 	props: ['benchName'],

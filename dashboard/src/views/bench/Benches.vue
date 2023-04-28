@@ -49,7 +49,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: 'Benches - NexTash Cloud'
+			title: 'Benches - Jirlie Cloud'
 		};
 	},
 	components: {

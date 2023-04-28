@@ -111,7 +111,7 @@ export default {
 	name: 'Sites',
 	pageMeta() {
 		return {
-			title: 'Sites - NexTash Cloud'
+			title: 'Sites - Jirlie Cloud'
 		};
 	},
 	props: ['bench'],
