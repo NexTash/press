@@ -29,7 +29,7 @@
 				</Button>
 			</template>
 			<SuccessCard class="mb-4" title="Thanks for your feedback!" v-else>
-				Your feedback helps improve Jirlie Cloud.
+				Your feedback helps improve Unify360 Cloud.
 			</SuccessCard>
 		</Dialog>
 	</div>

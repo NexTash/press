@@ -129,7 +129,7 @@ export default {
 	name: 'Site',
 	pageMeta() {
 		return {
-			title: `Site - ${this.siteName} - Jirlie Cloud`
+			title: `Site - ${this.siteName} - Unify360 Cloud`
 		};
 	},
 	props: ['siteName'],

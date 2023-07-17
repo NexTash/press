@@ -74,7 +74,7 @@ export default {
 	name: 'Marketplace',
 	pageMeta() {
 		return {
-			title: 'Developer - Jirlie Cloud'
+			title: 'Developer - Unify360 Cloud'
 		};
 	},
 	components: {

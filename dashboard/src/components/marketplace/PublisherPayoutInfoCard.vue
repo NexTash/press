@@ -46,7 +46,7 @@
 					<Input
 						label="Preferred Payment Method"
 						type="select"
-						:options="['Jirlie Cloud Credits', 'Bank Transfer', 'PayPal']"
+						:options="['Unify360 Cloud Credits', 'Bank Transfer', 'PayPal']"
 						v-model="payoutMethod"
 					/>
 
@@ -59,7 +59,7 @@
 
 					<Input
 						label="GSTIN (if applicable)"
-						v-if="payoutMethod != 'Jirlie Cloud Credits'"
+						v-if="payoutMethod != 'Unify360 Cloud Credits'"
 						type="text"
 						v-model="gstin"
 					/>

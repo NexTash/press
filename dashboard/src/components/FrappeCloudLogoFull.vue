@@ -1,3 +1,3 @@
 <template>
-	<img src="../assets/logo.gif" alt="Jirlie Logo">
+	<img src="../assets/1000Unify.png" alt="Unify360 Logo">
 </template>

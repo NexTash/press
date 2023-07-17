@@ -9,7 +9,7 @@
 
 		<div v-if="app">
 			<label class="mb-3 text-base" for="version-select"
-				>Compatible Jirlie Version</label
+				>Compatible Unify360 Version</label
 			>
 			<select
 				id="version-select"

@@ -101,7 +101,7 @@ export default {
 	name: 'Server',
 	pageMeta() {
 		return {
-			title: `Server - ${this.serverName} - Jirlie Cloud`
+			title: `Server - ${this.serverName} - Unify360 Cloud`
 		};
 	},
 	props: ['serverName'],

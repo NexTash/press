@@ -45,7 +45,7 @@ export default {
 	name: 'Bench',
 	pageMeta() {
 		return {
-			title: `Bench - ${this.bench?.title || 'Private'} - Jirlie Cloud`
+			title: `Bench - ${this.bench?.title || 'Private'} - Unify360 Cloud`
 		};
 	},
 	props: ['benchName'],

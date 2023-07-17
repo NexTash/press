@@ -29,7 +29,7 @@ export default {
 	name: 'AccountSettings',
 	pageMeta() {
 		return {
-			title: 'Settings - Jirlie Cloud'
+			title: 'Settings - Unify360 Cloud'
 		};
 	},
 	components: {

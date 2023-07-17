@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div>
-			<PageHeader title="Sites" subtitle="Your Jirlie instances">
+			<PageHeader title="Sites" subtitle="Your Unify360 instances">
 				<template v-if="this.$account.team.enabled" v-slot:actions>
 					<Button
 						appearance="primary"
@@ -111,7 +111,7 @@ export default {
 	name: 'Sites',
 	pageMeta() {
 		return {
-			title: 'Sites - Jirlie Cloud'
+			title: 'Sites - Unify360 Cloud'
 		};
 	},
 	props: ['bench'],

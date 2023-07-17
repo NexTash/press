@@ -49,7 +49,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: 'Benches - Jirlie Cloud'
+			title: 'Benches - Unify360 Cloud'
 		};
 	},
 	components: {

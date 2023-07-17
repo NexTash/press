@@ -5,8 +5,8 @@
 	>
 		<div class="mx-auto mb-10 lg:w-1/2">
 			<Card
-				title="Welcome to Jirlie Cloud"
-				subtitle="To start using Jirlie Cloud, complete the following steps to get your account up and running."
+				title="Welcome to Unify360 Cloud"
+				subtitle="To start using Unify360 Cloud, complete the following steps to get your account up and running."
 			>
 				<div class="relative mt-2">
 					<OnboardingStepCreateAccount />

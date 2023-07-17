@@ -125,7 +125,7 @@ const marketplacePromotionalBanners = useResource({
 
 		<Dialog
 			v-model="showPromotionalDialog"
-			title="Jirlie Cloud Marketplace"
+			title="Unify360 Cloud Marketplace"
 			@close="e => (clickedPromotion = null)"
 		>
 			<div v-if="clickedPromotion" class="flex flex-row items-center">
