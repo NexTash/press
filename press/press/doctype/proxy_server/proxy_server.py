@@ -22,16 +22,17 @@ class ProxyServer(BaseServer):
 
 	def validate_domains(self):
 		domains = [row.domain for row in self.domains]
+		code_servers = [row.code_server for row in self.domains]
 		# Always include self.domain in the domains child table
 		# Remove duplicates
 		domains = unique([self.domain] + domains)
 		self.domains = []
-		for domain in domains:
+		for i, domain in enumerate(domains):
 			if not frappe.db.exists(
 				"TLS Certificate", {"wildcard": True, "status": "Active", "domain": domain}
 			):
 				frappe.throw(f"Valid wildcard TLS Certificate not found for {domain}")
-			self.append("domains", {"domain": domain})
+			self.append("domains", {"domain": domain, "code_server": code_servers[i]})
 
 	def validate_proxysql_admin_password(self):
 		if not self.proxysql_admin_password:
@@ -55,6 +56,7 @@ class ProxyServer(BaseServer):
 						"fullchain.pem": certificate.full_chain,
 						"chain.pem": certificate.intermediate_chain,
 					},
+					"code_server": domain.code_server,
 				}
 			)
 		return wildcard_domains
@@ -65,7 +67,8 @@ class ProxyServer(BaseServer):
 		wildcards = self.get_wildcard_domains()
 		agent.setup_wildcard_hosts(wildcards)
 
-	def _setup_server(self):
+	@frappe.whitelist()
+	def setup_server(self):
 		agent_password = self.get_password("agent_password")
 		agent_repository_url = self.get_agent_repository_url()
 		certificate_name = frappe.db.get_value(
@@ -84,38 +87,41 @@ class ProxyServer(BaseServer):
 		else:
 			kibana_password = None
 
-		try:
-			ansible = Ansible(
-				playbook="self_hosted_proxy.yml"
-				if getattr(self, "is_self_hosted", False)
-				else "proxy.yml",
-				server=self,
-				user=self.ssh_user or "root",
-				port=self.ssh_port or 22,
-				variables={
-					"server": self.name,
-					"workers": 1,
-					"domain": self.domain,
-					"agent_password": agent_password,
-					"agent_repository_url": agent_repository_url,
-					"monitoring_password": monitoring_password,
-					"log_server": log_server,
-					"kibana_password": kibana_password,
-					"certificate_private_key": certificate.private_key,
-					"certificate_full_chain": certificate.full_chain,
-					"certificate_intermediate_chain": certificate.intermediate_chain,
-				},
-			)
-			play = ansible.run()
-			self.reload()
-			if play.status == "Success":
-				self.status = "Active"
-				self.is_server_setup = True
-			else:
-				self.status = "Broken"
-		except Exception:
+		# to remove
+		# try:
+		ansible = Ansible(
+			playbook="self_hosted_proxy.yml"
+			if getattr(self, "is_self_hosted", False)
+			else "proxy.yml",
+			server=self,
+			user=self.ssh_user or "root",
+			port=self.ssh_port or 22,
+			variables={
+				"server": self.name,
+				"workers": 1,
+				"domain": self.domain,
+				"agent_password": agent_password,
+				"agent_repository_url": agent_repository_url,
+				"monitoring_password": monitoring_password,
+				"log_server": log_server,
+				"kibana_password": kibana_password,
+				"certificate_private_key": certificate.private_key,
+				"certificate_full_chain": certificate.full_chain,
+				"certificate_intermediate_chain": certificate.intermediate_chain,
+			},
+		)
+		play = ansible.run()
+		self.reload()
+		if play.status == "Success":
+			self.status = "Active"
+			self.is_server_setup = True
+		else:
 			self.status = "Broken"
-			log_error("Proxy Server Setup Exception", server=self.as_dict())
+		
+		log_error("Proxy Server Setup Exception", server=self.as_dict())
+		# except Exception:
+		# 	self.status = "Broken"
+		# 	log_error("Proxy Server Setup Exception", server=self.as_dict())
 		self.save()
 
 	def _install_exporters(self):

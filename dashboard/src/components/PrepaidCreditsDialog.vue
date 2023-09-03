@@ -164,7 +164,7 @@ export default {
 				name: 'Unify360 Cloud',
 				image: '/assets/press/images/frappe-cloud-logo.png',
 				prefill: {
-					email: this.$account.team.name
+					email: this.$account.team.user
 				},
 				theme: { color: '#2490EF' },
 				handler: this.handlePaymentSuccess
