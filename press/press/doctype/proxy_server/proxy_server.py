@@ -68,7 +68,8 @@ class ProxyServer(BaseServer):
 		wildcards = self.get_wildcard_domains()
 		agent.setup_wildcard_hosts(wildcards)
 
-	def _setup_server(self):
+	@frappe.whitelist()
+	def setup_server(self):
 		agent_password = self.get_password("agent_password")
 		agent_repository_url = self.get_agent_repository_url()
 		certificate_name = frappe.db.get_value(
@@ -87,38 +88,41 @@ class ProxyServer(BaseServer):
 		else:
 			kibana_password = None
 
-		try:
-			ansible = Ansible(
-				playbook="self_hosted_proxy.yml"
-				if getattr(self, "is_self_hosted", False)
-				else "proxy.yml",
-				server=self,
-				user=self.ssh_user or "root",
-				port=self.ssh_port or 22,
-				variables={
-					"server": self.name,
-					"workers": 1,
-					"domain": self.domain,
-					"agent_password": agent_password,
-					"agent_repository_url": agent_repository_url,
-					"monitoring_password": monitoring_password,
-					"log_server": log_server,
-					"kibana_password": kibana_password,
-					"certificate_private_key": certificate.private_key,
-					"certificate_full_chain": certificate.full_chain,
-					"certificate_intermediate_chain": certificate.intermediate_chain,
-				},
-			)
-			play = ansible.run()
-			self.reload()
-			if play.status == "Success":
-				self.status = "Active"
-				self.is_server_setup = True
-			else:
-				self.status = "Broken"
-		except Exception:
+		# to remove
+		# try:
+		ansible = Ansible(
+			playbook="self_hosted_proxy.yml"
+			if getattr(self, "is_self_hosted", False)
+			else "proxy.yml",
+			server=self,
+			user=self.ssh_user or "root",
+			port=self.ssh_port or 22,
+			variables={
+				"server": self.name,
+				"workers": 1,
+				"domain": self.domain,
+				"agent_password": agent_password,
+				"agent_repository_url": agent_repository_url,
+				"monitoring_password": monitoring_password,
+				"log_server": log_server,
+				"kibana_password": kibana_password,
+				"certificate_private_key": certificate.private_key,
+				"certificate_full_chain": certificate.full_chain,
+				"certificate_intermediate_chain": certificate.intermediate_chain,
+			},
+		)
+		play = ansible.run()
+		self.reload()
+		if play.status == "Success":
+			self.status = "Active"
+			self.is_server_setup = True
+		else:
 			self.status = "Broken"
-			log_error("Proxy Server Setup Exception", server=self.as_dict())
+		
+		log_error("Proxy Server Setup Exception", server=self.as_dict())
+		# except Exception:
+		# 	self.status = "Broken"
+		# 	log_error("Proxy Server Setup Exception", server=self.as_dict())
 		self.save()
 
 	def _install_exporters(self):
@@ -386,6 +390,92 @@ class ProxyServer(BaseServer):
 			ansible.run()
 		except Exception:
 			log_error("ProxySQL Monitor Setup Exception", server=self.as_dict())
+
+	@frappe.whitelist()
+	def setup_wireguard(self):
+		if not self.private_ip_interface_id:
+			play = frappe.get_last_doc(
+				"Ansible Play", {"play": "Ping Server", "server": self.name}
+			)
+			task = frappe.get_doc("Ansible Task", {"play": play.name, "task": "Gather Facts"})
+			import json
+
+			task_res = json.loads(task.result)["ansible_facts"]
+			for i in task_res["interfaces"]:
+				if task_res[i]["ipv4"]["address"] == self.private_ip:
+					self.private_ip_interface_id = task_res[i]["device"]
+			self.save()
+		frappe.enqueue_doc(
+			self.doctype, self.name, "_setup_wireguard", queue="long", timeout=1200
+		)
+
+	def _setup_wireguard(self):
+		try:
+			ansible = Ansible(
+				playbook="wireguard.yml",
+				server=self,
+				variables={
+					"server": self.name,
+					"wireguard_port": self.wireguard_port,
+					"wireguard_network": self.wireguard_network_ip
+					+ "/"
+					+ self.wireguard_network.split("/")[1],
+					"interface_id": self.private_ip_interface_id,
+					"wireguard_private_key": False,
+					"wireguard_public_key": False,
+					"peers": "",
+					"reload_wireguard": True if self.is_wireguard_setup else False,
+				},
+			)
+			play = ansible.run()
+			if play.status == "Success":
+				self.reload()
+				self.is_wireguard_setup = True
+				if not self.wireguard_private_key and not self.wireguard_public_key:
+					self.wireguard_private_key = frappe.get_doc(
+						"Ansible Task", {"play": play.name, "task": "Generate Wireguard Private Key"}
+					).output
+					self.wireguard_public_key = frappe.get_doc(
+						"Ansible Task", {"play": play.name, "task": "Generate Wireguard Public Key"}
+					).output
+				self.save()
+		except Exception:
+			log_error("Wireguard Setup Exception", server=self.as_dict())
+
+	@frappe.whitelist()
+	def reload_wireguard(self):
+		frappe.enqueue_doc(
+			"Proxy Server", self.name, "_reload_wireguard", queue="default", timeout=1200
+		)
+
+	def _reload_wireguard(self):
+		import json
+
+		peers = frappe.get_list(
+			"Wireguard Peer",
+			filters={"upstream_proxy": self.name, "status": "Active"},
+			fields=["peer_name as name", "public_key", "ip as peer_ip", "allowed_ips"],
+			order_by="creation asc",
+		)
+		try:
+			ansible = Ansible(
+				playbook="reload_wireguard.yml",
+				server=self,
+				variables={
+					"server": self.name,
+					"wireguard_port": self.wireguard_port,
+					"wireguard_network": self.wireguard_network_ip
+					+ "/"
+					+ self.wireguard_network.split("/")[1],
+					"interface_id": self.private_ip_interface_id,
+					"wireguard_private_key": self.get_password("wireguard_private_key"),
+					"wireguard_public_key": self.get_password("wireguard_public_key"),
+					"peers": json.dumps(peers),
+				},
+			)
+			ansible.run()
+		except Exception:
+			log_error("Wireguard Setup Exception", server=self.as_dict())
 
 
 def process_update_nginx_job_update(job):
