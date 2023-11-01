@@ -275,7 +275,6 @@ def poll_pending_jobs():
 			queue="short",
 			server=server,
 			job_id=f"poll_pending_jobs:{server.server}",
-			deduplicate=True,
 		)
 
 
