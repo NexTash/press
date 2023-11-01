@@ -30,6 +30,8 @@
 	</div>
 </template>
 <script>
+import { validateSubdomain } from '@/utils';
+
 export default {
 	name: 'Hostname',
 	props: ['modelValue'],
@@ -43,7 +45,7 @@ export default {
 	resources: {
 		domain() {
 			return {
-				method: 'press.api.site.get_domain',
+				url: 'press.api.site.get_domain',
 				auto: true
 			};
 		}

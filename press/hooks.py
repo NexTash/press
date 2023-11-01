@@ -63,14 +63,10 @@ update_website_context = ["press.overrides.update_website_context"]
 
 website_route_rules = [
 	{"from_route": "/dashboard/<path:app_path>", "to_route": "dashboard"},
+	{"from_route": "/dashboard2/<path:app_path>", "to_route": "dashboard2"},
 ]
 
 website_redirects = [
-	{
-		"source": r"/deploy(.*)",
-		"target": r"/api/method/press.api.quick_site.deploy\1",
-		"match_with_query_string": True,
-	},
 	{"source": "/dashboard/f-login", "target": get_frappe_io_auth_url() or "/"},
 	{"source": "/f-login", "target": "/dashboard/f-login"},
 	{"source": "/signup", "target": "/erpnext/signup"},
@@ -194,13 +190,12 @@ scheduler_events = {
 	"hourly_long": [
 		"press.press.doctype.server.server.scale_workers",
 		"press.press.doctype.subscription.subscription.create_usage_records",
+		"press.press.doctype.usage_record.usage_record.link_unlinked_usage_records",
 		"press.press.doctype.bench.bench.sync_benches",
-		"press.press.doctype.site.pool.create",
 		"press.press.doctype.invoice.invoice.finalize_draft_invoices",
 		"press.press.doctype.app.app.poll_new_releases",
 		"press.press.doctype.agent_job.agent_job.fail_old_jobs",
 		"press.press.doctype.site_update.site_update.mark_stuck_updates_as_fatal",
-		"press.marketplace.doctype.marketplace_consumption_record.marketplace_consumption_record.consume_credits_for_prepaid_records",
 		"press.press.doctype.deploy_candidate.deploy_candidate.cleanup_build_directories",
 		"press.press.doctype.deploy_candidate.deploy_candidate.delete_draft_candidates",
 		"press.press.doctype.virtual_disk_snapshot.virtual_disk_snapshot.delete_old_snapshots",
@@ -235,7 +230,6 @@ scheduler_events = {
 			"press.press.doctype.virtual_machine.virtual_machine.sync_virtual_machines",
 		],
 		"*/5 * * * *": [
-			"press.press.doctype.central_site_migration.central_site_migration.start_one_migration",
 			"press.press.doctype.version_upgrade.version_upgrade.update_from_site_update",
 			"press.press.doctype.site_replication.site_replication.update_from_site",
 			"press.press.doctype.virtual_disk_snapshot.virtual_disk_snapshot.sync_snapshots",
@@ -243,7 +237,10 @@ scheduler_events = {
 		"* * * * *": [
 			"press.press.doctype.deploy_candidate.deploy_candidate.run_scheduled_builds",
 		],
-		"*/10 * * * *": ["press.press.doctype.site.saas_pool.create"],
+		"*/10 * * * *": [
+			"press.saas.doctype.saas_product.pooling.create",
+			"press.press.doctype.site.saas_pool.create",
+		],
 		"*/30 * * * *": ["press.press.doctype.site_update.scheduled_auto_updates.trigger"],
 		"15,45 * * * *": [
 			"press.press.doctype.site.site_usages.update_cpu_usages",
@@ -269,6 +266,8 @@ fixtures = [
 	"Plan",
 	{"dt": "Role", "filters": [["role_name", "like", "Press%"]]},
 	"Site Config Key Blacklist",
+	"Press Method Permission",
+	"Bench Dependency",
 ]
 # Testing
 # -------

@@ -19,24 +19,67 @@ from press.agent import Agent
 
 import responses
 
-from press.utils.test import foreground_enqueue_doc
+from press.utils.test import foreground_enqueue, foreground_enqueue_doc
+
+
+def fn_appender(before_insert: Callable, prepare_agent_responses: Callable):
+	def new_before_insert(self):
+		before_insert(self)
+		prepare_agent_responses(self)
+
+	return new_before_insert
+
+
+before_insert: Callable = lambda self: None
 
 
 def fake_agent_job_req(
-	job_name: str,
+	job_type: str,
 	status: Literal["Success", "Pending", "Running", "Failure"],
+	data: dict,
+	steps: list[dict],
 ) -> Callable:
+	data = data or {}
+	steps = steps or []
+
 	def prepare_agent_responses(self):
 		"""
 		Fake successful delivery with fake job id
 
 		Also return fake result on polling
+		steps: list of {"name": "Step name", "status": "status"} dictionaries
 		"""
 		nonlocal status
+		nonlocal job_type
+		if self.job_type != job_type:  # only fake the job we want to fake
+			return
 		job_id = int(make_autoname(".#"))
+		if steps:
+			needed_steps = frappe.get_all(
+				"Agent Job Type Step", {"parent": job_type}, pluck="step_name"
+			)
+			for step in needed_steps:
+				if not any(step == s["name"] for s in steps):
+					steps.append(
+						{
+							"name": step,
+							"status": "Success",
+							"data": {},
+						}
+					)
 
-		# TODO: make job creation independent of POST #
+		for step in steps:
+			step["start"] = "2023-08-20 18:24:28.024885"
+			step["data"] = {}
+			if step["status"] in ["Success", "Failure"]:
+				step["duration"] = "00:00:13.464445"
+				step["end"] = "2023-08-20 18:24:41.489330"
+			if step["status"] in ["Success", "Failure", "Running"]:
+				step["start"] = "2023-08-20 18:24:28.024885"
+				step["end"] = None
+				step["duration"] = None
 
+		# TODO: auto add response corresponding to request type #
 		responses.post(
 			f"https://{self.server}:443/agent/{self.request_path}",
 			json={"job": job_id},
@@ -51,8 +94,9 @@ def fake_agent_job_req(
 		responses.add(
 			responses.GET,
 			f"https://{self.server}:443/agent/jobs/{str(job_id)}",
+			# TODO:  populate steps with data from agent job type #
 			json={
-				"data": {},
+				"data": data,
 				# TODO: uncomment lines as needed and make new parameters #
 				"duration": "00:00:13.496281",
 				"end": "2023-08-20 18:24:41.506067",
@@ -61,7 +105,8 @@ def fake_agent_job_req(
 				# "name": "Install App on Site",
 				"start": "2023-08-20 18:24:28.009786",
 				"status": status,
-				"steps": [
+				"steps": steps
+				or [
 					{
 						"data": {
 							# "command": "docker exec -w /home/frappe/frappe-bench	bench-0001-000025-f1 bench --site fdesk-old.local.frappe.dev install-app helpdesk",
@@ -74,7 +119,7 @@ def fake_agent_job_req(
 						"duration": "00:00:13.464445",
 						"end": "2023-08-20 18:24:41.489330",
 						# "id": 1350,
-						"name": job_name,
+						"name": job_type,
 						"start": "2023-08-20 18:24:28.024885",
 						"status": status,
 					}
@@ -83,19 +128,33 @@ def fake_agent_job_req(
 			status=200,
 		)
 
-	return prepare_agent_responses
+	global before_insert
+	before_insert = fn_appender(before_insert, prepare_agent_responses)
+	return before_insert
 
 
 @contextmanager
 def fake_agent_job(
-	job_name: str, status: Literal["Success", "Pending", "Running", "Failure"]
+	job_type: str,
+	status: Literal["Success", "Pending", "Running", "Failure"] = "Success",
+	data: dict = None,
+	steps: list[dict] = None,
 ):
-	"""Fakes agent job request and response. Also polls the job."""
+	"""Fakes agent job request and response. Also polls the job.
+
+	HEADS UP: Don't use this when you're mocking enqueue_http_request in your test context
+	"""
 	with responses.mock, patch.object(
-		AgentJob, "before_insert", fake_agent_job_req(job_name, status), create=True
+		AgentJob,
+		"before_insert",
+		fake_agent_job_req(job_type, status, data, steps),
+		create=True,
 	), patch(
 		"press.press.doctype.agent_job.agent_job.frappe.enqueue_doc",
 		new=foreground_enqueue_doc,
+	), patch(
+		"press.press.doctype.agent_job.agent_job.frappe.enqueue",
+		new=foreground_enqueue,
 	), patch(
 		"press.press.doctype.agent_job.agent_job.frappe.db.commit", new=Mock()
 	), patch(
@@ -105,6 +164,8 @@ def fake_agent_job(
 			{}
 		)  # due to bug in FF related to only_if_creator docperm
 		yield
+		global before_insert
+		before_insert = lambda self: None  # noqa
 
 
 @patch.object(AgentJob, "enqueue_http_request", new=Mock())

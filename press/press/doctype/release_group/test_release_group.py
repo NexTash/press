@@ -7,6 +7,7 @@ from unittest.mock import patch
 
 import frappe
 from frappe.core.utils import find
+from press.api.bench import deploy_information
 from press.press.doctype.app.app import App
 from press.press.doctype.app.test_app import create_test_app
 from press.press.doctype.app_release.test_app_release import create_test_app_release
@@ -211,3 +212,30 @@ class TestReleaseGroup(unittest.TestCase):
 				frappe_version.dependencies, lambda x: x.dependency == "PYTHON_VERSION"
 			).version,
 		)
+
+	def test_cant_set_min_greater_than_max_workers(self):
+		rg = create_test_release_group([create_test_app()])
+		rg.max_gunicorn_workers = 1
+		rg.min_gunicorn_workers = 2
+		self.assertRaises(frappe.ValidationError, rg.save)
+		rg.max_background_workers = 1
+		rg.min_background_workers = 2
+		self.assertRaises(frappe.ValidationError, rg.save)
+		rg.reload()
+		try:
+			rg.max_gunicorn_workers = 2
+			rg.min_gunicorn_workers = 1
+			rg.max_background_workers = 2
+			rg.min_background_workers = 1
+			rg.save()
+			rg.max_gunicorn_workers = 0  # default
+			rg.min_gunicorn_workers = 2
+			rg.max_background_workers = 0  # default
+			rg.min_background_workers = 2
+			rg.save()
+		except frappe.ValidationError:
+			self.fail("Should not raise validation error")
+
+	def test_update_available_shows_for_first_deploy(self):
+		rg = create_test_release_group([create_test_app()])
+		self.assertEqual(deploy_information(rg.name).get("update_available"), True)

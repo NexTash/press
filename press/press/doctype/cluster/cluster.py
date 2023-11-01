@@ -81,7 +81,7 @@ class Cluster(Document):
 				"Images for required series not available in other regions. Create Images from server docs.",
 				frappe.ValidationError,
 			)
-		frappe.enqueue_doc(self.doctype, self.name, "_add_images", queue="long")
+		frappe.enqueue_doc(self.doctype, self.name, "_add_images", queue="long", timeout=1200)
 
 	def _add_images(self):
 		"""Copies VMIs required for the cluster"""
@@ -331,15 +331,24 @@ class Cluster(Document):
 		)
 
 	def get_other_region_vmis(self, get_series=False):
-		return frappe.get_all(
-			"Virtual Machine Image",
-			filters={
-				"region": ("!=", self.region),
-				"series": ("in", list(self.server_doctypes.values())),
-				"status": "Available",
-			},
-			pluck="name" if not get_series else "series",
-		)
+		vmis = []
+		for series in list(self.server_doctypes.values()):
+			vmis.extend(
+				frappe.get_all(
+					"Virtual Machine Image",
+					["name", "series", "creation"],
+					filters={
+						"region": ("!=", self.region),
+						"series": series,
+						"status": "Available",
+					},
+					limit=1,
+					order_by="creation DESC",
+					pluck="name" if not get_series else "series",
+				)
+			)
+
+		return vmis
 
 	def copy_virtual_machine_images(self) -> Generator[VirtualMachineImage, None, None]:
 		"""Creates VMIs required for the cluster"""
@@ -426,6 +435,7 @@ class Cluster(Document):
 		match doctype:
 			case "Database Server":
 				server = vm.create_database_server()
+				server.ram = plan.memory
 				server.title = f"{title} - Database"
 			case "Server":
 				server = vm.create_server()
