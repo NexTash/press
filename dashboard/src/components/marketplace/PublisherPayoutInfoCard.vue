@@ -46,7 +46,7 @@
 					<Input
 						label="Preferred Payment Method"
 						type="select"
-						:options="['NexTash Cloud Credits', 'Bank Transfer', 'PayPal']"
+						:options="['IBISERP Cloud Credits', 'Bank Transfer', 'PayPal']"
 						v-model="payoutMethod"
 					/>
 
@@ -59,7 +59,7 @@
 
 					<Input
 						label="GSTIN (if applicable)"
-						v-if="payoutMethod != 'NexTash Cloud Credits'"
+						v-if="payoutMethod != 'IBISERP Cloud Credits'"
 						type="text"
 						v-model="gstin"
 					/>

@@ -27,7 +27,7 @@ export default {
 	name: 'AccountSettings',
 	pageMeta() {
 		return {
-			title: 'Settings - NexTash Cloud'
+			title: 'Settings - IBISERP Cloud'
 		};
 	},
 	components: {

@@ -74,7 +74,7 @@ export default {
 	name: 'Marketplace',
 	pageMeta() {
 		return {
-			title: 'Developer - NexTash Cloud'
+			title: 'Developer - IBISERP Cloud'
 		};
 	},
 	components: {

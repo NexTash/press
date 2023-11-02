@@ -1,3 +1,3 @@
 <template>
-	<img src="../assets/logo.webp" alt="NexTash Logo">
+	<img src="../assets/logo.png" alt="IBISERP Logo">
 </template>

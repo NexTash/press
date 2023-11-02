@@ -160,7 +160,7 @@ export default {
 	name: 'Site',
 	pageMeta() {
 		return {
-			title: `Site - ${this.siteName} - NexTash Cloud`
+			title: `Site - ${this.siteName} - IBISERP Cloud`
 		};
 	},
 	props: ['siteName'],
