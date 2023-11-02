@@ -54,7 +54,7 @@
 
 .bg-blue-500,
 .bg-blue-600 {
-	background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+	background-color: rgb(42, 175, 109);
 }
 
 .ring-blue-500 {
@@ -78,5 +78,5 @@
 [type='checkbox']:checked:focus,
 [type='radio']:checked:hover,
 [type='radio']:checked:focus {
-	background-color: #000000;
+	background-color: #298b0a;
 }
