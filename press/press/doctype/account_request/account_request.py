@@ -56,7 +56,7 @@ class AccountRequest(Document):
 	def send_verification_email(self):
 		url = self.get_verification_url()
 		signature, message, image_path = "", "", ""
-		app_title = "ERPNext" if self.saas_app == "erpnext" else "iBISERP Cloud"
+		app_title = "iBISERP" if self.saas_app == "erpnext" else "iBISERP Cloud"
 		sender = ""
 		args = {}
 
