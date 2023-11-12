@@ -54,9 +54,7 @@
 
 .bg-blue-500,
 .bg-blue-600,
-.bg-blue-500:hover,
-.bg-blue-600:hover,
-.hover {
+.hover\:bg-blue-600:hover {
 	background-color: rgb(42, 175, 109);
 }
 
