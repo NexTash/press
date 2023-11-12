@@ -123,7 +123,7 @@ def validate_plan(secret_key):
 		else:
 			frappe.throw(
 				"Your plan for email delivery service has expired try upgrading it from, "
-				f"https://frappecloud.com/dashboard/sites/{subscription['site']}/overview",
+				f"https://ibiserp.online/dashboard/sites/{subscription['site']}/overview",
 				PlanExpiredError,
 			)
 

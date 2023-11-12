@@ -12,7 +12,7 @@ frappe.ui.form.on('Central Site Migration', {
 		}
 		if (frm.doc.status == 'Success') {
 			frm.add_custom_button(__('Show on FC'), () => {
-				window.open(`https://frappecloud.com/dashboard/sites/${frm.doc.site}`);
+				window.open(`https://ibiserp.online/dashboard/sites/${frm.doc.site}`);
 			});
 		}
 	},

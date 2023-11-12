@@ -16,7 +16,7 @@ CHROMEDRIVER_PATH = os.path.expanduser("~/chromedriver")
 try:
 	WEBSITE = frappe.utils.get_url()
 except Exception:
-	WEBSITE = "https://frappecloud.com"
+	WEBSITE = "https://ibiserp.online"
 
 
 def checks():
