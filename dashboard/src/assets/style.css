@@ -81,3 +81,8 @@
 [type='radio']:checked:focus {
 	background-color: #298b0a;
 }
+
+
+.hover\:bg-blue-600:hover {
+	background-color: #298b0a !important;
+}
