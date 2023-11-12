@@ -58,7 +58,7 @@ def get_context(context):
 	)
 
 	context.metatags = {
-		"title": "Frappe Cloud Marketplace",
+		"title": "iBISERP Cloud Marketplace",
 		"description": "One Click Apps for your Frappe Sites",
 		"og:type": "website",
 	}

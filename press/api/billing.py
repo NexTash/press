@@ -507,8 +507,8 @@ def create_razorpay_order(amount):
 		"amount": amount * 100,
 		"currency": team.currency,
 		"notes": {
-			"Description": "Order for Frappe Cloud Prepaid Credits",
-			"Team (Frappe Cloud ID)": team.name,
+			"Description": "Order for iBISERP Cloud Prepaid Credits",
+			"Team (iBISERP Cloud ID)": team.name,
 		},
 	}
 	order = client.order.create(data=data)

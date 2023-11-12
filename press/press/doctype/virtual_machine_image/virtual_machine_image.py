@@ -24,7 +24,7 @@ class VirtualMachineImage(Document):
 	def create_image(self):
 		response = self.client.create_image(
 			InstanceId=self.aws_instance_id,
-			Name=f"Frappe Cloud {self.name} - {self.virtual_machine}",
+			Name=f"iBISERP Cloud {self.name} - {self.virtual_machine}",
 		)
 		self.aws_ami_id = response["ImageId"]
 		self.sync()
@@ -32,7 +32,7 @@ class VirtualMachineImage(Document):
 	def create_image_from_copy(self):
 		source = frappe.get_doc("Virtual Machine Image", self.copied_from)
 		response = self.client.copy_image(
-			Name=f"Frappe Cloud {self.name} - {self.virtual_machine}",
+			Name=f"iBISERP Cloud {self.name} - {self.virtual_machine}",
 			SourceImageId=source.aws_ami_id,
 			SourceRegion=source.region,
 		)

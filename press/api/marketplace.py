@@ -973,7 +973,7 @@ def use_existing_credits(site, app, subscription, plan):
 @frappe.whitelist()
 def use_partner_credits(name, app, site, plan, amount, credits):
 	"""
-	Consume partner credits on PRM and add Frappe Cloud credits
+	Consume partner credits on PRM and add iBISERP Cloud credits
 	"""
 	team = get_current_team(True)
 	if amount < team.get_available_partner_credits():

@@ -1,4 +1,4 @@
-"""Functions for automated audit of frappe cloud systems."""
+"""Functions for automated audit of iBISERP Cloud systems."""
 import json
 from datetime import datetime, timedelta
 from press.press.doctype.server.server import Server

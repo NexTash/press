@@ -129,7 +129,7 @@ class Cluster(Document):
 			TagSpecifications=[
 				{
 					"ResourceType": "vpc",
-					"Tags": [{"Key": "Name", "Value": f"Frappe Cloud - {self.name}"}],
+					"Tags": [{"Key": "Name", "Value": f"iBISERP Cloud - {self.name}"}],
 				},
 			],
 			CidrBlock=self.cidr_block,
@@ -142,7 +142,7 @@ class Cluster(Document):
 			TagSpecifications=[
 				{
 					"ResourceType": "subnet",
-					"Tags": [{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Public Subnet"}],
+					"Tags": [{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - Public Subnet"}],
 				},
 			],
 			AvailabilityZone=self.availability_zone,
@@ -156,7 +156,7 @@ class Cluster(Document):
 				{
 					"ResourceType": "internet-gateway",
 					"Tags": [
-						{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Internet Gateway"},
+						{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - Internet Gateway"},
 					],
 				},
 			],
@@ -181,7 +181,7 @@ class Cluster(Document):
 
 		client.create_tags(
 			Resources=[self.aws_route_table_id],
-			Tags=[{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Route Table"}],
+			Tags=[{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - Route Table"}],
 		)
 
 		response = client.describe_network_acls(
@@ -190,18 +190,18 @@ class Cluster(Document):
 		self.aws_network_acl_id = response["NetworkAcls"][0]["NetworkAclId"]
 		client.create_tags(
 			Resources=[self.aws_network_acl_id],
-			Tags=[{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Network ACL"}],
+			Tags=[{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - Network ACL"}],
 		)
 
 		response = client.create_security_group(
-			GroupName=f"Frappe Cloud - {self.name} - Security Group",
+			GroupName=f"iBISERP Cloud - {self.name} - Security Group",
 			Description="Allow Everything",
 			VpcId=self.aws_vpc_id,
 			TagSpecifications=[
 				{
 					"ResourceType": "security-group",
 					"Tags": [
-						{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Security Group"},
+						{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - Security Group"},
 					],
 				},
 			],
@@ -276,14 +276,14 @@ class Cluster(Document):
 			aws_secret_access_key=self.get_password("aws_secret_access_key"),
 		)
 		response = client.create_security_group(
-			GroupName=f"Frappe Cloud - {self.name} - Proxy - Security Group",
+			GroupName=f"iBISERP Cloud - {self.name} - Proxy - Security Group",
 			Description="Allow Everything on Proxy",
 			VpcId=self.aws_vpc_id,
 			TagSpecifications=[
 				{
 					"ResourceType": "security-group",
 					"Tags": [
-						{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Proxy - Security Group"},
+						{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - Proxy - Security Group"},
 					],
 				},
 			],

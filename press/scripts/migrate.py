@@ -532,7 +532,7 @@ def upload_backup(local_site):
 			files_uploaded[file_type] = uploaded_file
 		else:
 			print("Upload failed for: {}".format(file_path))
-			print("Cannot create site on Frappe Cloud without all site backup files uploaded.")
+			print("Cannot create site on iBISERP Cloud without all site backup files uploaded.")
 			print("Exitting...")
 			sys.exit(1)
 
@@ -618,7 +618,7 @@ def restore_site(local_site):
 	| retry_if_exception_type(SystemExit) & retry_unless_exception_type(KeyboardInterrupt)
 )
 def create_session():
-	print("\nFrappe Cloud credentials @ {}".format(remote_site))
+	print("\niBISERP Cloud credentials @ {}".format(remote_site))
 
 	# take user input from STDIN
 	username = click.prompt("Username").strip()

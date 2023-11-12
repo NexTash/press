@@ -235,7 +235,7 @@ def process_prepaid_marketplace_payment(event):
 	# Add hosting as separate line item
 	invoice_line_items.append(
 		{
-			"description": "Frappe Cloud Hosting",
+			"description": "iBISERP Cloud Hosting",
 			"document_type": "Site",
 			"document_name": site,
 			"rate": float(total_hosting_cost),

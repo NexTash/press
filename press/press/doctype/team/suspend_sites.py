@@ -45,10 +45,10 @@ def suspend_sites_and_send_email(team):
 		account_update_link = frappe.utils.get_url("/dashboard/welcome")
 		frappe.sendmail(
 			recipients=email,
-			subject="Your sites have been suspended on Frappe Cloud",
+			subject="Your sites have been suspended on iBISERP Cloud",
 			template="payment_failed",
 			args={
-				"subject": "Your sites have been suspended on Frappe Cloud",
+				"subject": "Your sites have been suspended on iBISERP Cloud",
 				"account_update_link": account_update_link,
 				"card_not_added": True,
 				"sites": sites,

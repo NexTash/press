@@ -37,7 +37,7 @@ def new(server):
 
 @frappe.whitelist()
 def sshkey():
-	key_doc = frappe.get_doc("SSH Key", "Frappe Cloud Production")
+	key_doc = frappe.get_doc("SSH Key", "iBISERP Cloud Production")
 	return key_doc.public_key
 
 

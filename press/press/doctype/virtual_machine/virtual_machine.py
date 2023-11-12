@@ -83,7 +83,7 @@ class VirtualMachine(Document):
 			"TagSpecifications": [
 				{
 					"ResourceType": "instance",
-					"Tags": [{"Key": "Name", "Value": f"Frappe Cloud - {self.name}"}],
+					"Tags": [{"Key": "Name", "Value": f"iBISERP Cloud - {self.name}"}],
 				},
 			],
 			"UserData": self.get_cloud_init() if self.virtual_machine_image else "",
@@ -279,12 +279,12 @@ class VirtualMachine(Document):
 	def create_snapshots(self):
 		response = self.client().create_snapshots(
 			InstanceSpecification={"InstanceId": self.aws_instance_id},
-			Description=f"Frappe Cloud - {self.name} - {frappe.utils.now()}",
+			Description=f"iBISERP Cloud - {self.name} - {frappe.utils.now()}",
 			TagSpecifications=[
 				{
 					"ResourceType": "snapshot",
 					"Tags": [
-						{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - {frappe.utils.now()}"}
+						{"Key": "Name", "Value": f"iBISERP Cloud - {self.name} - {frappe.utils.now()}"}
 					],
 				},
 			],
