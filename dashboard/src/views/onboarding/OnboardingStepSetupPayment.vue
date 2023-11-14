@@ -188,7 +188,7 @@ export default {
 				return ['', 'Card', 'Prepaid Credits', 'Partner Credits'];
 			}
 
-			return ['', 'Card', 'Prepaid Credits'];
+			return ['', 'Card'];
 		}
 	}
 };

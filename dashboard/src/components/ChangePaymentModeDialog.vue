@@ -83,7 +83,7 @@ export default {
 			if (this.$account.team.erpnext_partner) {
 				return ['Card', 'Prepaid Credits', 'Partner Credits'];
 			}
-			return ['Card', 'Prepaid Credits'];
+			return ['Card'];
 		}
 	}
 };
