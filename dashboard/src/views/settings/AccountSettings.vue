@@ -3,12 +3,12 @@
 		<PageHeader title="Settings" :subtitle="pageSubtitle" />
 		<div class="grid grid-cols-1 gap-5 md:grid-cols-2">
 			<AccountProfile />
-			<AccountTeam />
+			<!-- <AccountTeam /> -->
 			<AccountMembers />
-			<AccountReferral />
+			<!-- <AccountReferral /> -->
 			<AccountEmails />
-			<AccountAPI />
-			<AccountSSHKey />
+			<!-- <AccountAPI /> -->
+			<!-- <AccountSSHKey /> -->
 		</div>
 	</div>
 </template>
