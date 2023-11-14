@@ -58,7 +58,7 @@
 								v-show="!publicApp.frappe"
 								fullCircleImage
 							>
-								<template #secondary-content style="display: none;">
+								<!-- <template #secondary-content>
 									<a
 										v-if="publicApp.marketplace"
 										class="inline-block text-sm leading-snug text-blue-600"
@@ -71,7 +71,7 @@
 									<span class="text-sm leading-snug text-gray-700" v-else>
 										{{ publicApp.repository_owner }}/{{ publicApp.repository }}
 									</span>
-								</template>
+								</template> -->
 							</SelectableCard>
 							<div class="h-1 py-4" v-if="publicApps.length > 4"></div>
 						</div>
