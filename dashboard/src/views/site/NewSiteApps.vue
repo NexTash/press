@@ -58,7 +58,7 @@
 								v-show="!publicApp.frappe"
 								fullCircleImage
 							>
-								<template #secondary-content>
+								<template #secondary-content style="display: none;">
 									<a
 										v-if="publicApp.marketplace"
 										class="inline-block text-sm leading-snug text-blue-600"
