@@ -110,7 +110,7 @@ export default {
 					},
 					icon: FCIcons.SiteIcon
 				},
-				{
+				/* {
 					label: 'Benches',
 					route: '/benches',
 					highlight: route => {
@@ -144,7 +144,7 @@ export default {
 					},
 					icon: FCIcons.AppsIcon,
 					condition: () => this.$account.team?.is_developer
-				},
+				}, */
 				{
 					label: 'Billing',
 					route: '/billing',
