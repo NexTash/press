@@ -36,18 +36,18 @@
 							{{ app.title }}
 						</div>
 
-						<!-- <CommitTag
+						<CommitTag
 							class="ml-2"
 							:tag="app.tag || app.hash.substr(0, 7)"
 							:link="`${app.repository_url}/commit/${app.hash}`"
-						/> -->
+						/>
 					</div>
 
-					<!-- <div
+					<div
 						class="truncate hover:text-clip mt-[2px] text-base text-gray-600"
 					>
 						{{ app.repository_owner }}/{{ app.repository }}:{{ app.branch }}
-					</div> -->
+					</div>
 				</div>
 
 				<div class="w-1/6">
@@ -252,7 +252,9 @@
 </template>
 <script>
 import CommitTag from '@/components/utils/CommitTag.vue';
+import ChangeAppPlanSelector from '@/components/ChangeAppPlanSelector.vue';
 import SiteOverviewAppSubscriptions from './SiteOverviewAppSubscriptions.vue';
+import MarketplacePrepaidCredits from '../marketplace/MarketplacePrepaidCredits.vue';
 import Fuse from 'fuse.js/dist/fuse.basic.esm';
 
 export default {
@@ -462,15 +464,15 @@ export default {
 		},
 		dropdownItems(app) {
 			return [
-				(app.app != 'frappe' || app.app != 'ibiserp_ui') && {
+				app.app != 'frappe' && {
 					label: 'Remove App',
 					handler: () => this.confirmRemoveApp(app)
 				},
-				// {
-				// 	label: 'Visit Repo',
-				// 	handler: () =>
-				// 		window.open(`${app.repository_url}/tree/${app.branch}`, '_blank')
-				// }
+				{
+					label: 'Visit Repo',
+					handler: () =>
+						window.open(`${app.repository_url}/tree/${app.branch}`, '_blank')
+				}
 			].filter(Boolean);
 		},
 		confirmRemoveApp(app) {
