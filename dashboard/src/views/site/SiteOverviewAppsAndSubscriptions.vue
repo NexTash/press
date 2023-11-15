@@ -464,7 +464,7 @@ export default {
 		},
 		dropdownItems(app) {
 			return [
-				(app.app != 'frappe' || app.app != 'ibiserp_ui') && {
+				(app.app != 'frappe' && app.app != 'ibiserp_ui') && {
 					label: 'Remove App',
 					handler: () => this.confirmRemoveApp(app)
 				},
