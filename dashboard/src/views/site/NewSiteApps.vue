@@ -184,7 +184,7 @@ export default {
 	},
 	methods: {
 		toggleApp(app) {
-			if (app.frappe) return;
+			if (app.frappe || app.ibiserp_ui) return;
 			if (!this.selectedApps.includes(app.app)) {
 				this.$emit('update:selectedApps', this.selectedApps.concat(app.app));
 			} else {
