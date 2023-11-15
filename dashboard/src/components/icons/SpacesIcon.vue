@@ -5,7 +5,7 @@
 		height="20"
 		viewBox="0 0 24 24"
 		fill="none"
-		stroke="currentColor"
+		stroke="#32AF6D"
 		stroke-width="1.3"
 		stroke-linecap="round"
 		stroke-linejoin="round"
