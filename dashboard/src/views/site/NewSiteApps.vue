@@ -57,7 +57,7 @@
 								:selected="selectedApps.includes(publicApp.app)"
 								v-show="!publicApp.frappe"
 								fullCircleImage
-							>z
+							>
 								<!-- <template #secondary-content>
 									<a
 										v-if="publicApp.marketplace"
