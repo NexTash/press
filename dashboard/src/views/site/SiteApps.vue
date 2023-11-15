@@ -27,16 +27,16 @@
 							{{ app.title }}
 						</div>
 
-						<CommitTag
+						<!-- <CommitTag
 							class="ml-2"
 							:tag="app.tag || app.hash.substr(0, 7)"
 							:link="`${app.repository_url}/commit/${app.hash}`"
-						/>
+						/> -->
 					</div>
 
-					<div class="mt-[2px] text-base text-gray-600">
+					<!-- <div class="mt-[2px] text-base text-gray-600">
 						{{ app.repository_owner }}/{{ app.repository }}:{{ app.branch }}
-					</div>
+					</div> -->
 				</div>
 				<div class="ml-auto flex items-center space-x-2">
 					<Dropdown :options="dropdownItems(app)" right>
@@ -245,15 +245,15 @@ export default {
 		},
 		dropdownItems(app) {
 			return [
-				app.app != 'frappe' && {
+				(app.app != 'frappe' || app.app != 'ibiserp_ui') && {
 					label: 'Remove App',
 					handler: () => this.confirmRemoveApp(app)
 				},
-				{
-					label: 'Visit Repo',
-					handler: () =>
-						window.open(`${app.repository_url}/tree/${app.branch}`, '_blank')
-				}
+				// {
+				// 	label: 'Visit Repo',
+				// 	handler: () =>
+				// 		window.open(`${app.repository_url}/tree/${app.branch}`, '_blank')
+				// }
 			].filter(Boolean);
 		},
 		confirmRemoveApp(app) {
