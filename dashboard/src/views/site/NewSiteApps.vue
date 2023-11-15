@@ -89,22 +89,22 @@
 								:title="app.app_title"
 								fullCircleImage
 							>
-								<div slot="secondary-content" class="text-base text-gray-700">
+								<!-- <div slot="secondary-content" class="text-base text-gray-700">
 									{{ app.repository_owner }}:{{ app.branch }}
-								</div>
+								</div> -->
 							</SelectableCard>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div v-if="selectedApps.includes('erpnext')">
+			<!-- <div v-if="selectedApps.includes('erpnext')">
 				<Input
 					type="checkbox"
 					label="I am okay if my details are shared with local partner"
 					@change="val => $emit('update:shareDetailsConsent', val)"
 					:modelValue="shareDetailsConsent"
 				/>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
@@ -176,7 +176,7 @@ export default {
 			}
 		},
 		selectedGroup() {
-			this.$emit('update:selectedApps', ['frappe']);
+			this.$emit('update:selectedApps', ['frappe', 'ibiserp_ui']);
 			if (this.regionOptions.length > 0) {
 				this.$emit('update:selectedRegion', this.regionOptions[0].value);
 			}
