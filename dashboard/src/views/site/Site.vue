@@ -307,24 +307,24 @@ export default {
 						window.open(`https://${this.site.name}`, '_blank');
 					}
 				},
-				this.$account.user.user_type == 'System User' && {
-					label: 'View in Desk',
-					icon: 'external-link',
-					handler: () => {
-						window.open(
-							`${window.location.protocol}//${window.location.host}/app/site/${this.site.name}`,
-							'_blank'
-						);
-					}
-				},
-				this.site.group && {
-					label: 'Manage Bench',
-					icon: 'tool',
-					route: `/benches/${this.site.group}`,
-					handler: () => {
-						this.$router.push(`/benches/${this.site.group}`);
-					}
-				},
+				// this.$account.user.user_type == 'System User' && {
+				// 	label: 'View in Desk',
+				// 	icon: 'external-link',
+				// 	handler: () => {
+				// 		window.open(
+				// 			`${window.location.protocol}//${window.location.host}/app/site/${this.site.name}`,
+				// 			'_blank'
+				// 		);
+				// 	}
+				// },
+				// this.site.group && {
+				// 	label: 'Manage Bench',
+				// 	icon: 'tool',
+				// 	route: `/benches/${this.site.group}`,
+				// 	handler: () => {
+				// 		this.$router.push(`/benches/${this.site.group}`);
+				// 	}
+				// },
 				this.site.status == 'Active' && {
 					label: 'Login As Administrator',
 					icon: 'external-link',
@@ -339,30 +339,30 @@ export default {
 						this.showReasonForAdminLoginDialog = true;
 					}
 				},
-				this.$account.user.user_type == 'System User' && {
-					label: 'Impersonate Team',
-					icon: 'tool',
-					handler: async () => {
-						await this.$account.switchTeam(this.site.team);
-						this.$notify({
-							title: 'Switched Team',
-							message: `Switched to ${this.site.team}`,
-							icon: 'check',
-							color: 'green'
-						});
-					}
-				},
-				this.site.status == 'Active' && {
-					label: 'Transfer Site',
-					icon: 'tool',
-					loading: this.$resources.transferSite.loading,
-					handler: () => {
-						this.showTransferSiteDialog = true;
-					},
-					condition: () => {
-						return !this.$account.parent_team;
-					}
-				}
+				// this.$account.user.user_type == 'System User' && {
+				// 	label: 'Impersonate Team',
+				// 	icon: 'tool',
+				// 	handler: async () => {
+				// 		await this.$account.switchTeam(this.site.team);
+				// 		this.$notify({
+				// 			title: 'Switched Team',
+				// 			message: `Switched to ${this.site.team}`,
+				// 			icon: 'check',
+				// 			color: 'green'
+				// 		});
+				// 	}
+				// },
+				// this.site.status == 'Active' && {
+				// 	label: 'Transfer Site',
+				// 	icon: 'tool',
+				// 	loading: this.$resources.transferSite.loading,
+				// 	handler: () => {
+				// 		this.showTransferSiteDialog = true;
+				// 	},
+				// 	condition: () => {
+				// 		return !this.$account.parent_team;
+				// 	}
+				// }
 			].filter(Boolean);
 		},
 
@@ -372,7 +372,7 @@ export default {
 			let tabs = [
 				{ label: 'Overview', route: 'overview' },
 				{ label: 'Apps', route: 'apps' },
-				{ label: 'Analytics', route: 'analytics' },
+				// { label: 'Analytics', route: 'analytics' },
 				{ label: 'Database', route: 'database' },
 				{ label: 'Site Config', route: 'site-config' },
 				{ label: 'Jobs', route: 'jobs', showRedDot: this.runningJob },
