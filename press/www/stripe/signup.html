@@ -39,7 +39,7 @@
 							onchange="validate_subdomain(this)"
 						/>
 						<div class="input-group-append">
-							<span class="input-group-text rounded-right">.erpnext.com</span>
+							<span class="input-group-text rounded-right">.erpnu.com</span>
 						</div>
 					</div>
 					<small class="form-text"></small>
@@ -200,7 +200,7 @@
 	function set_subdomain_from_url() {
 		let query_params = frappe.utils.get_query_params();
 		if (query_params.domain) {
-			let subdomain = query_params.domain.replace('.erpnext.com', '');
+			let subdomain = query_params.domain.replace('.erpnu.com', '');
 			$('input[name="subdomain"]').val(subdomain).trigger('change');
 		}
 	}
@@ -233,8 +233,8 @@
 				controller.show_input_feedback(
 					'subdomain',
 					!available
-						? `${subdomain}.erpnext.com is already taken`
-						: `${subdomain}.erpnext.com is available`,
+						? `${subdomain}.erpnu.com is already taken`
+						: `${subdomain}.erpnu.com is available`,
 					!available
 				);
 			});

@@ -16,7 +16,7 @@
 			<div v-if="!bench">
 				<div class="flex items-center justify-between">
 					<h2 class="text-base font-medium leading-6 text-gray-900">
-						Select Frappe Framework Version
+						Select ERPNU Framework Version
 					</h2>
 				</div>
 				<div class="mt-2">
@@ -302,7 +302,7 @@
 					class="checkbox"
 					type="checkbox"
 					v-model="agreedToRegionConsent"
-					:label="`I agree that the laws of the region selected by me (${selectedClusterTitle}) shall stand applicable to me and Frappe.`"
+					:label="`I agree that the laws of the region selected by me (${selectedClusterTitle}) shall stand applicable to me and ERPNU.`"
 				/>
 				<FormControl
 					class="checkbox"
