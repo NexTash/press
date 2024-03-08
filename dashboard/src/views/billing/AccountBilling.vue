@@ -28,7 +28,7 @@ export default {
 	name: 'BillingScreen',
 	pageMeta() {
 		return {
-			title: 'Billing - NexTash Cloud'
+			title: 'Billing - ERPZELT Cloud'
 		};
 	},
 	props: ['invoiceName'],
