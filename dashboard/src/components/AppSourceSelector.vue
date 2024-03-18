@@ -16,9 +16,9 @@
 					<div class="font-semibold">
 						{{ app.title }}
 					</div>
-					<div class="text-gray-700">
+					<!-- <div class="text-gray-700">
 						{{ app.source.repository_owner }}/{{ app.source.repository }}
-					</div>
+					</div> -->
 				</div>
 				<Dropdown :options="dropdownItems(app)" right>
 					<template v-slot="{ open }">

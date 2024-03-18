@@ -68,9 +68,9 @@
 									>
 										Details
 									</a>
-									<span class="text-sm leading-snug text-gray-700" v-else>
+									<!-- <span class="text-sm leading-snug text-gray-700" v-else>
 										{{ publicApp.repository_owner }}/{{ publicApp.repository }}
-									</span>
+									</span> -->
 								</template>
 							</SelectableCard>
 							<div class="h-1 py-4" v-if="publicApps.length > 4"></div>
