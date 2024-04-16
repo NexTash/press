@@ -90,7 +90,8 @@
 								fullCircleImage
 							>
 								<div slot="secondary-content" class="text-base text-gray-700">
-									{{ app.repository_owner }}:{{ app.branch }}
+									<!-- {{ app.repository_owner }}: -->
+									{{ app.branch }}
 								</div>
 							</SelectableCard>
 						</div>

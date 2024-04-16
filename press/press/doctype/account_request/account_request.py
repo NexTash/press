@@ -62,7 +62,7 @@ class AccountRequest(Document):
 			print()
 			return
 
-		subject = "Verify your email for Frappe"
+		subject = "Verify your email for ERPNU"
 		args = {}
 
 		custom_template = self.saas_app and frappe.db.get_value(

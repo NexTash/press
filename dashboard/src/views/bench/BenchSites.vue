@@ -142,7 +142,8 @@
 					<div class="mt-1 flex items-center space-x-2 text-gray-600">
 						<FeatherIcon name="git-branch" class="h-4 w-4" />
 						<div class="truncate text-base hover:text-clip">
-							{{ app.repository_owner }}/{{ app.repository }}:{{ app.branch }}
+							<!-- {{ app.repository_owner }}/{{ app.repository }}: -->
+							{{ app.branch }}
 						</div>
 					</div>
 				</template>
