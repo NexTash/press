@@ -133,7 +133,7 @@ export default {
 				{
 					label: 'Support & Docs',
 					icon: 'help-circle',
-					onClick: () => (window.location.href = '/support')
+					onClick: () => (window.location.href = '/')
 				},
 				{
 					label: 'Settings',

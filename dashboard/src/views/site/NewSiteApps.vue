@@ -179,7 +179,7 @@ export default {
 			}
 		},
 		selectedGroup() {
-			this.$emit('update:selectedApps', ['frappe']);
+			this.$emit('update:selectedApps', ['frappe', 'erpnu_theme']);
 			if (this.regionOptions.length > 0) {
 				this.$emit('update:selectedRegion', this.regionOptions[0].value);
 			}
@@ -188,6 +188,8 @@ export default {
 	methods: {
 		toggleApp(app) {
 			if (app.frappe) return;
+			if (app.app == "erpnu_theme") return;
+
 			if (!this.selectedApps.includes(app.app)) {
 				this.$emit('update:selectedApps', this.selectedApps.concat(app.app));
 			} else {
@@ -226,7 +228,7 @@ export default {
 						this.selectedVersion = this.versions.filter(
 							v => v.group.name === this.bench
 						)[0].name;
-						this.$emit('update:selectedApps', ['frappe']);
+						this.$emit('update:selectedApps', ['frappe', 'erpnu_theme']);
 					} else {
 						this.selectedVersion = this.versions[0].name;
 					}
