@@ -626,24 +626,45 @@ def get_new_site_options(group: str = None):
 
 
 @frappe.whitelist()
-def get_plans(name=None, rg=None):
-	plans = Plan.get_plans(
-		doctype="Site Plan",
-		fields=[
-			"name",
-			"plan_title",
-			"price_usd",
-			"price_inr",
-			"cpu_time_per_day",
-			"max_storage_usage",
-			"max_database_usage",
-			"database_access",
-			"support_included",
-			"offsite_backups",
-			"private_benches",
-			"monitor_access",
-		],
-	)
+def get_plans(name=None, rg=None, coupon=None):
+	if coupon == "Existed":
+		plans = Plan.get_plans(
+			doctype="Site Plan",
+			filters={'name' : "Unlimited"},
+			fields=[
+				"name",
+				"plan_title",
+				"price_usd",
+				"price_inr",
+				"cpu_time_per_day",
+				"max_storage_usage",
+				"max_database_usage",
+				"database_access",
+				"support_included",
+				"offsite_backups",
+				"private_benches",
+				"monitor_access",
+			]
+		)
+	else:
+		plans = Plan.get_plans(
+			doctype="Site Plan",
+			fields=[
+				"name",
+				"plan_title",
+				"price_usd",
+				"price_inr",
+				"cpu_time_per_day",
+				"max_storage_usage",
+				"max_database_usage",
+				"database_access",
+				"support_included",
+				"offsite_backups",
+				"private_benches",
+				"monitor_access",
+			]
+		)
+	print("HELOOOOOOOOOOOOOOOOOOOOOOOOOOOO", plans)
 
 	if name or rg:
 		team = get_current_team()

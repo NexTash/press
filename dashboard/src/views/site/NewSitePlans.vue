@@ -29,15 +29,18 @@ export default {
 	},
 	data() {
 		return {
-			plans: null
+			plans: null,
 		};
 	},
 	resources: {
 		plans() {
+			let coupon = localStorage.getItem("coupon")
+			console.log(coupon);
 			return {
 				url: 'press.api.site.get_plans',
 				params: {
-					rg: this.bench
+					rg: this.bench,
+					coupon : coupon
 				},
 				auto: true,
 				onSuccess(r) {
@@ -45,6 +48,7 @@ export default {
 						plan.disabled = !this.$account.hasBillingInfo;
 						return plan;
 					});
+					localStorage.setItem("coupon", "")
 				}
 			};
 		}
