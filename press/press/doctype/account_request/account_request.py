@@ -118,7 +118,7 @@ class AccountRequest(Document):
 			template = "verify_account"
 
 			if self.invited_by and self.role != "Press Admin":
-				subject = f"You are invited by {self.invited_by} to join Frappe Cloud"
+				subject = f"You are invited by {self.invited_by} to join ERPNU Cloud"
 				template = "invite_team_member"
 
 		args.update(

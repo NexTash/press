@@ -551,7 +551,9 @@ export default {
 			let pingTime = 999999;
 			try {
 				let t1 = new Date().getTime();
-				let r = await fetch(`https://${server}`);
+				let r = await fetch(`https://${server}`,{
+					mode: "no-cors"
+				});
 				let t2 = new Date().getTime();
 				pingTime = t2 - t1;
 			} catch (error) {

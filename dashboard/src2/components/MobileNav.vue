@@ -6,7 +6,7 @@
 					<img
 						:src="`/assets/press/images/frappecloud-logo.png`"
 						class="h-7 w-7 shrink-0"
-						alt="Frappe Cloud Logo"
+						alt="ERPNU Cloud Logo"
 					/>
 				</router-link>
 			</span>

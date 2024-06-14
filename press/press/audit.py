@@ -1,4 +1,4 @@
-"""Functions for automated audit of frappe cloud systems."""
+"""Functions for automated audit of ERPNU Cloud systems."""
 import json
 from press.press.doctype.server.server import Server
 from typing import Dict, List

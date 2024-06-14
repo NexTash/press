@@ -54,6 +54,18 @@
 						{{ $team.doc.payment_mode || 'Not set' }}
 					</div>
 				</div>
+				<div class="border rounded-md p-4">
+						<div class="flex justify-between text-base">
+							<div>Coupon Code</div>
+							<Button @click="send_data()" theme="gray"
+								>Apply</Button
+							>
+						</div>
+						<div class="text-2xl font-medium">
+							<input type="text" id="coupon_code" class="styled-input">
+						</div>
+						<span id="coupon_message"></span>
+					</div>
 				<div class="rounded-md border p-4">
 					<div class="flex justify-between text-sm text-gray-700">
 						<div class="mb-2">Billing Details</div>
@@ -91,7 +103,7 @@
 				</div>
 			</div>
 
-			<div class="mt-1">
+			<!-- <div class="mt-1">
 				<a
 					href="https://frappecloud.com/payment-options"
 					target="_blank"
@@ -99,7 +111,7 @@
 				>
 					Alternative Payment Options
 				</a>
-			</div>
+			</div> -->
 		</div>
 
 		<div class="py-20 text-center" v-if="$resources.upcomingInvoice.loading">
@@ -176,7 +188,9 @@ export default {
 			showChangeModeDialog: false,
 			showBillingDetailsDialog: false,
 			showAddCardDialog: false,
-			showUpcomingInvoiceDialog: false
+			showUpcomingInvoiceDialog: false,
+			error: null,
+			success: null,
 		};
 	},
 	mounted() {
@@ -224,6 +238,56 @@ export default {
 				.filter(Boolean)
 				.join(', ');
 		}
+	},
+	methods:{
+		send_data() {
+			let coupon_code = document.getElementById("coupon_code").value;
+			fetch('/api/method/press.api.coupon.check_coupan', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					coupon_code: coupon_code
+				})
+			})
+			.then(response => response.json())
+			.then(data => {
+				let message = document.getElementById("coupon_message");
+				message.innerText = data.message;
+				if(data.message == "Unlimited Coupon Applied"){
+					message.classList.add("success");
+				}
+				else{
+					message.classList.add("error");
+				}
+				window.location.reload();
+			})
+		},
 	}
 };
 </script>
+
+<style>
+	.error{
+		color:red;
+	}
+	.success{
+		color:green;
+	}
+	.styled-input {
+    background-color: #f0f0f0; /* Light grey background */
+    border: 1px solid #ccc;    /* Light grey border */
+    border-radius: 4px;        /* Rounded corners */
+    padding: 10px;             /* Padding inside the input */
+    font-size: 16px;           /* Font size */
+    width: 65%;               /* Full width */
+    box-sizing: border-box;    /* Ensures padding doesn't exceed the width */
+    transition: all 0.3s ease; /* Smooth transition for focus effect */
+}
+	.styled-input:focus {
+		border-color: #888;        /* Darker grey border on focus */
+		outline: none;             /* Remove default outline */
+		box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Subtle shadow on focus */
+	}
+</style>

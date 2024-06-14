@@ -671,7 +671,9 @@ def get_new_site_options(group: str = None):
 
 @frappe.whitelist()
 def get_site_plans():
-	return Plan.get_plans(
+	team = get_current_team(get_doc=True)
+	if team.custom_is_unlimited_coupon_used:
+		plans = Plan.get_plans(
 		doctype="Site Plan",
 		fields=[
 			"name",
@@ -691,6 +693,30 @@ def get_site_plans():
 		# TODO: Remove later, temporary change because site plan has all document_type plans
 		filters={"document_type": "Site"},
 	)
+	else:
+		plans = Plan.get_plans(
+		doctype="Site Plan",
+		fields=[
+			"name",
+			"plan_title",
+			"price_usd",
+			"price_inr",
+			"cpu_time_per_day",
+			"max_storage_usage",
+			"max_database_usage",
+			"database_access",
+			"support_included",
+			"offsite_backups",
+			"private_benches",
+			"monitor_access",
+			"dedicated_server_plan",
+		],
+		# TODO: Remove later, temporary change because site plan has all document_type plans
+		filters={"document_type": "Site",
+		   "name": ("!=", "Unlimited")}
+		)
+	return plans
+
 
 
 @frappe.whitelist()
