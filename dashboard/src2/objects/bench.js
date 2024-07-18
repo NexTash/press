@@ -217,7 +217,7 @@ export default {
 										h(
 											'a',
 											{
-												href: 'https://frappecloud.com/docs/faq/app-installation-issue',
+												href: 'https://erpnu.com/docs/faq/app-installation-issue',
 												target: '_blank'
 											},
 											[h(icon('help-circle', 'w-3 h-3'), {})]

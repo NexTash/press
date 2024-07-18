@@ -532,7 +532,7 @@ def upload_backup(local_site):
 			files_uploaded[file_type] = uploaded_file
 		else:
 			print("Upload failed for: {}".format(file_path))
-			print("Cannot create site on Frappe Cloud without all site backup files uploaded.")
+			print("Cannot create site on ERPNU Cloud without all site backup files uploaded.")
 			print("Exitting...")
 			sys.exit(1)
 
@@ -618,7 +618,7 @@ def restore_site(local_site):
 	| retry_if_exception_type(SystemExit) & retry_unless_exception_type(KeyboardInterrupt)
 )
 def create_session():
-	print("\nFrappe Cloud credentials @ {}".format(remote_site))
+	print("\nERPNU Cloud credentials @ {}".format(remote_site))
 
 	# take user input from STDIN
 	username = click.prompt("Username").strip()
@@ -645,7 +645,7 @@ def frappecloud_migrator(local_site):
 	global login_url, upload_url, remote_link_url, register_remote_url, options_url, site_exists_url, site_info_url, restore_site_url, account_details_url, all_site_url, finish_multipart_url
 	global session, migrator_actions, remote_site
 
-	remote_site = frappe.conf.frappecloud_url or "frappecloud.com"
+	remote_site = frappe.conf.frappecloud_url or "erpnu.com"
 	scheme = "https"
 
 	login_url = "{}://{}/api/method/login".format(scheme, remote_site)

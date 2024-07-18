@@ -91,15 +91,15 @@
 				</div>
 			</div>
 
-			<div class="mt-1">
+			<!-- <div class="mt-1">
 				<a
-					href="https://frappecloud.com/payment-options"
+					href="https://erpnu.com/payment-options"
 					target="_blank"
 					class="text-sm text-gray-700 underline"
 				>
 					Alternative Payment Options
 				</a>
-			</div>
+			</div> -->
 		</div>
 
 		<div class="py-20 text-center" v-if="$resources.upcomingInvoice.loading">

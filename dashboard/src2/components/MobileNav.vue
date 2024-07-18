@@ -4,9 +4,9 @@
 			<span class="font-semibold">
 				<router-link :to="{ name: 'Site List' }">
 					<img
-						:src="`/assets/press/images/frappecloud-logo.png`"
-						class="h-7 w-7 shrink-0"
-						alt="Frappe Cloud Logo"
+						:src="`/assets/press/images/logo-icon.png`"
+						class="h-7 w-6 shrink-0"
+						alt="ERPNU Cloud Logo"
 					/>
 				</router-link>
 			</span>
@@ -91,6 +91,6 @@ const SwitchTeamDialog2 = defineAsyncComponent(() =>
 const showTeamSwitcher = ref(false);
 
 function support() {
-	window.open('https://frappecloud.com/support', '_blank');
+	window.open('https://erpnu.com/support', '_blank');
 }
 </script>

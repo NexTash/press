@@ -64,15 +64,11 @@
 						By clicking on
 						<span>{{ isInvitation ? 'Accept' : 'Create account' }}</span
 						>, you accept our
-						<Link href="https://frappecloud.com/terms" target="_blank"
+						<Link href="https://erpnu.com/terms" target="_blank"
 							>Terms of Service </Link
 						>,
-						<Link href="https://frappecloud.com/privacy" target="_blank">
+						<Link href="https://erpnu.com/privacy-policy" target="_blank">
 							Privacy Policy
-						</Link>
-						&#38;
-						<Link href="https://frappecloud.com/cookie-policy" target="_blank">
-							Cookie Policy
 						</Link>
 					</label>
 				</div>

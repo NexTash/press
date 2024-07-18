@@ -41,7 +41,7 @@
 				class="mt-4"
 				type="textarea"
 				variant="outline"
-				placeholder="I am leaving Frappe Cloud because..."
+				placeholder="I am leaving ERPNU Cloud because..."
 				size="md"
 				v-model="note"
 			/>
@@ -101,7 +101,7 @@ export default {
 				'I am not satisfied with the service',
 				'I am moving to a different service',
 				'I am not using the service anymore',
-				'Frappe Cloud is too expensive for me',
+				'ERPNU Cloud is too expensive for me',
 				'I was just exploring the platform',
 				'Payment issues',
 				'I prefer self-hosting my instance',

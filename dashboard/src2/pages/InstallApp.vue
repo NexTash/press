@@ -185,7 +185,7 @@
 					</div>
 					<a
 						class="text-sm underline"
-						href="https://frappecloud.com/docs/installing-an-app"
+						href="https://erpnu.com/docs/installing-an-app"
 						target="_blank"
 					>
 						Read documentation
@@ -213,7 +213,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: `Install ${this.appDoc.title} - Frappe Cloud`
+			title: `Install ${this.appDoc.title} - ERPNU Cloud`
 		};
 	},
 	components: {

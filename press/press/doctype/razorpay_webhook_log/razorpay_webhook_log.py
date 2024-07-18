@@ -62,8 +62,8 @@ def razorpay_webhook_handler():
 				# Don't log error if its not FrappeCloud order
 				# Example of valid notes
 				# "notes": {
-				# 	"Description": "Order for Frappe Cloud Prepaid Credits",
-				# 	"Team (Frappe Cloud ID)": "test@example.com",
+				# 	"Description": "Order for ERPNU Cloud Prepaid Credits",
+				# 	"Team (ERPNU Cloud ID)": "test@example.com",
 				# 	"gst": 245
 				# },
 				return

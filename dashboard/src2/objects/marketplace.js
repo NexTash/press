@@ -584,7 +584,7 @@ export default {
 					condition: () => app.doc.status === 'Draft',
 					onClick() {
 						window.open(
-							'https://frappecloud.com/docs/marketplace/marketpace-guidelines',
+							'https://erpnu.com/docs/marketplace/marketpace-guidelines',
 							'_blank'
 						);
 					}

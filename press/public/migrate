@@ -1,6 +1,6 @@
 #!./env/bin/python
-# Fallback Script to run the easy migrate script in place of `bench --site {site} migrate-to frappecloud.com`
-# This file was originally hosted on Frappe Cloud. For more information, contact us at frappecloud.com
+# Fallback Script to run the easy migrate script in place of `bench --site {site} migrate-to erpnu.com`
+# This file was originally hosted on ERPNU Cloud. For more information, contact us at erpnu.com
 # Copyright (c) 2020, Frappe Technologies Pvt. Ltd.
 
 import os
@@ -16,7 +16,7 @@ import frappe
 
 def frappecloud_migrator(local_site):
 	print("Retreiving Site Migrator...")
-	remote_site = frappe.conf.frappecloud_url or "frappecloud.com"
+	remote_site = frappe.conf.frappecloud_url or "erpnu.com"
 	request_url = "https://{}/api/method/press.api.script".format(remote_site)
 	request = requests.get(request_url)
 
@@ -28,7 +28,7 @@ def frappecloud_migrator(local_site):
 		)
 		click.secho(
 			"Some errors occurred while recovering the migration script. Please contact"
-			" us @ Frappe Cloud if this issue persists",
+			" us @ ERPNU Cloud if this issue persists",
 			fg="yellow",
 		)
 		return

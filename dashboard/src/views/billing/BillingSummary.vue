@@ -63,13 +63,13 @@
 					</div>
 				</div>
 
-				<a
-					href="https://frappecloud.com/payment-options"
+				<!-- <a
+					href="https://erpnu.com/payment-options"
 					target="_blank"
 					class="text-sm text-gray-700 underline"
 				>
 					Alternative Payment Options
-				</a>
+				</a> -->
 				<ErrorMessage
 					:message="$resources.upcomingInvoice.error"
 					class="mt-3"

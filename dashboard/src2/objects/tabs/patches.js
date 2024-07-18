@@ -18,7 +18,7 @@ export default {
 	type: 'list',
 	list: {
 		experimental: true, // If removing this, uncheck App Patch doctype beta flag.
-		documentation: 'https://frappecloud.com/docs/benches/app-patches',
+		documentation: 'https://erpnu.com/docs/benches/app-patches',
 		doctype: 'App Patch',
 		filters: releaseGroup => {
 			return {

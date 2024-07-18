@@ -78,16 +78,16 @@
 		<template v-slot:body-content>
 			<span>Are you sure you want to remove this payment method?</span>
 			<br /><br />
-			<span v-if="$resources.paymentMethods.data.length === 1">
+			<!-- <span v-if="$resources.paymentMethods.data.length === 1">
 				If you intend to close your account please check the docs for
 				<Link
 					target="_blank"
-					href="https://frappecloud.com/docs/billing/disable-account"
+					href="https://erpnu.com/docs/billing/disable-account"
 					>cancelling subscription.</Link
 				>
-				Frappe Cloud is not responsible for any refund if the account is not
+				ERPNU Cloud is not responsible for any refund if the account is not
 				closed properly.
-			</span>
+			</span> -->
 		</template>
 	</Dialog>
 </template>

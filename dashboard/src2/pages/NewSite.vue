@@ -93,7 +93,7 @@
 						Select Plan
 					</h2>
 					<div>
-						<Button link="https://frappecloud.com/pricing" variant="ghost">
+						<Button link="https://erpnu.com/pricing" variant="ghost">
 							<template #prefix>
 								<i-lucide-help-circle class="h-4 w-4 text-gray-700" />
 							</template>

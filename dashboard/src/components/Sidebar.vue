@@ -7,10 +7,12 @@
 						class="flex w-[15rem] items-center rounded-md px-2 py-2 text-left"
 						:class="open ? 'bg-white shadow-sm' : 'hover:bg-gray-200'"
 					>
-						<FCLogo class="h-8 w-8 rounded" />
+					<img :src="`/assets/press/images/logo-icon.png`" 
+					class="h-8 w-6 rounded" 
+					alt="">
 						<div class="ml-2 flex flex-col">
 							<div class="text-base font-medium leading-none text-gray-900">
-								Frappe Cloud
+								ERPNU Cloud
 							</div>
 							<div
 								v-if="$account.user"

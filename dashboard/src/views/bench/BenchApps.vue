@@ -37,13 +37,13 @@
 								class="flex flex-row items-center"
 								v-if="app.last_github_poll_failed"
 							>
-								<Tooltip
+								<!-- <Tooltip
 									class="mr-2 flex cursor-pointer items-center rounded-full bg-gray-100 p-1"
 									text="What's this?"
 									placement="top"
 								>
 									<a
-										href="https://frappecloud.com/docs/faq/app-installation-issue"
+										href="https://erpnu.com/docs/faq/app-installation-issue"
 										target="_blank"
 									>
 										<FeatherIcon
@@ -51,7 +51,7 @@
 											name="help-circle"
 										/>
 									</a>
-								</Tooltip>
+								</Tooltip> -->
 
 								<Badge label="Attention Required" theme="red" />
 							</span>
