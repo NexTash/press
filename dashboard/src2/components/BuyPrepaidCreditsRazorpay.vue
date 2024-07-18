@@ -81,7 +81,7 @@ export default {
 				key: data.key_id,
 				order_id: data.order_id,
 				name: 'ERPNU Cloud',
-				image: '/assets/press/images/frappe-cloud-logo.png',
+				image: '/assets/press/images/logo-icon.png',
 				prefill: {
 					email: this.$team.doc.user
 				},

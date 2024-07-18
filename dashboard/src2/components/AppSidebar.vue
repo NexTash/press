@@ -112,12 +112,10 @@ export default {
 	},
 	methods: {
 		support() {
-			window.open('https://erpu.com/support', '_blank');
+			window.open('https://erpu.com/contact', '_blank');
 		},
 		feedback() {
-			window.open(
-				'https://erpu.com/frappe-cloud-feedback/new',
-				'_blank'
+			window.open('https://erpu.com/contact','_blank'
 			);
 		}
 	}

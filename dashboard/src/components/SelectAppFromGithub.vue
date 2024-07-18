@@ -153,7 +153,7 @@ export default {
 					}
 				},
 				onError() {
-					// Invalid Frappe App
+					// Invalid ERPNU App
 					if (this.$emit) this.$emit('onSelect', null);
 				}
 			};
