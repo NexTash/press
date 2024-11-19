@@ -92,7 +92,7 @@ def callback(code=None, state=None):
 		verification_url = account_request.get_verification_url()
 		frappe.local.response.location = verification_url
 	else:
-		# NexTash Cloud User Login
+		# AmarSoft Cloud User Login
 		team_exists, team_enabled = frappe.db.get_value(
 			"Team", {"user": email}, ["name", "enabled"]
 		) or [0, 0]
@@ -120,7 +120,7 @@ def callback(code=None, state=None):
 
 def invalid_login():
 	frappe.local.response["http_status_code"] = 401
-	return "Invalid state parameter. The session timed out. Please try again or contact  NexTash Cloud support at https://frappecloud.com/support"
+	return "Invalid state parameter. The session timed out. Please try again or contact  AmarSoft Cloud support at https://frappecloud.com/support"
 
 
 def google_oauth_flow():

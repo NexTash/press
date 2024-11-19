@@ -174,7 +174,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: 'Benches - NexTash Cloud'
+			title: 'Benches - AmarSoft Cloud'
 		};
 	},
 	components: {

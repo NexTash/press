@@ -124,7 +124,7 @@ class VirtualMachine(Document):
 			"TagSpecifications": [
 				{
 					"ResourceType": "instance",
-					"Tags": [{"Key": "Name", "Value": f"NexTash Cloud - {self.name}"}],
+					"Tags": [{"Key": "Name", "Value": f"AmarSoft Cloud - {self.name}"}],
 				},
 			],
 			"UserData": self.get_cloud_init() if self.virtual_machine_image else "",
@@ -532,12 +532,12 @@ class VirtualMachine(Document):
 	def _create_snapshots_aws(self):
 		response = self.client().create_snapshots(
 			InstanceSpecification={"InstanceId": self.instance_id},
-			Description=f"NexTash Cloud - {self.name} - {frappe.utils.now()}",
+			Description=f"AmarSoft Cloud - {self.name} - {frappe.utils.now()}",
 			TagSpecifications=[
 				{
 					"ResourceType": "snapshot",
 					"Tags": [
-						{"Key": "Name", "Value": f"NexTash Cloud - {self.name} - {frappe.utils.now()}"}
+						{"Key": "Name", "Value": f"AmarSoft Cloud - {self.name} - {frappe.utils.now()}"}
 					],
 				},
 			],
@@ -565,7 +565,7 @@ class VirtualMachine(Document):
 						CreateBootVolumeBackupDetails(
 							boot_volume_id=volume.volume_id,
 							type="INCREMENTAL",
-							display_name=f"NexTash Cloud - {self.name} - {volume.name} - {frappe.utils.now()}",
+							display_name=f"AmarSoft Cloud - {self.name} - {volume.name} - {frappe.utils.now()}",
 						)
 					)
 					.data
@@ -575,7 +575,7 @@ class VirtualMachine(Document):
 					CreateVolumeBackupDetails(
 						volume_id=volume.volume_id,
 						type="INCREMENTAL",
-						display_name=f"NexTash Cloud - {self.name} - {volume.name} - {frappe.utils.now()}",
+						display_name=f"AmarSoft Cloud - {self.name} - {volume.name} - {frappe.utils.now()}",
 					)
 				).data
 			try:

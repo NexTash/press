@@ -570,8 +570,8 @@ def create_razorpay_order(amount):
 		"amount": int(amount * 100),
 		"currency": team.currency,
 		"notes": {
-			"Description": "Order for NexTash Cloud Prepaid Credits",
-			"Team (NexTash Cloud ID)": team.name,
+			"Description": "Order for AmarSoft Cloud Prepaid Credits",
+			"Team (AmarSoft Cloud ID)": team.name,
 			"gst": gst_amount if team.currency == "INR" else 0,
 		},
 	}

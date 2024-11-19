@@ -13,7 +13,7 @@ export default {
 	name: 'BillingScreen',
 	pageMeta() {
 		return {
-			title: 'Billing - NexTash Cloud'
+			title: 'Billing - AmarSoft Cloud'
 		};
 	},
 	props: ['invoiceName'],

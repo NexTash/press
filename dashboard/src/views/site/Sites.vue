@@ -282,7 +282,7 @@ export default {
 	name: 'Sites',
 	pageMeta() {
 		return {
-			title: 'Sites - NexTash Cloud'
+			title: 'Sites - AmarSoft Cloud'
 		};
 	},
 	props: ['bench'],

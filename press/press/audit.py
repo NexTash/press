@@ -1,4 +1,4 @@
-"""Functions for automated audit of NexTash Cloud systems."""
+"""Functions for automated audit of AmarSoft Cloud systems."""
 import json
 from datetime import datetime, timedelta
 from press.press.doctype.server.server import Server

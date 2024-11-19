@@ -85,7 +85,7 @@
 					href="https://frappecloud.com/docs/billing/disable-account"
 					>cancelling subscription.</Link
 				>
-				NexTash Cloud is not responsible for any refund if the account is not
+				AmarSoft Cloud is not responsible for any refund if the account is not
 				closed properly.
 			</span>
 		</template>

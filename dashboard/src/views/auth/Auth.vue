@@ -8,7 +8,7 @@
 				>
 					<div v-if="hasForgotPassword">Reset password</div>
 					<div v-else-if="saasProduct">
-						Sign in to NexTash Cloud to start using
+						Sign in to AmarSoft Cloud to start using
 						<span class="font-semibold">{{ saasProduct.title }}</span>
 					</div>
 				</div>

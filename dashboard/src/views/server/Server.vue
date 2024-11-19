@@ -106,7 +106,7 @@ export default {
 	name: 'Server',
 	pageMeta() {
 		return {
-			title: `Server - ${this.serverName} - NexTash Cloud`
+			title: `Server - ${this.serverName} - AmarSoft Cloud`
 		};
 	},
 	props: ['serverName'],

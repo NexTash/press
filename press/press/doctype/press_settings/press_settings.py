@@ -42,9 +42,9 @@ class PressSettings(Document):
 	@frappe.whitelist()
 	def get_github_app_manifest(self):
 		if frappe.conf.developer_mode:
-			app_name = f"NexTash Cloud {frappe.generate_hash(length=6).upper()}"
+			app_name = f"AmarSoft Cloud {frappe.generate_hash(length=6).upper()}"
 		else:
-			app_name = "NexTash Cloud"
+			app_name = "AmarSoft Cloud"
 		manifest = {
 			"name": app_name,
 			"url": "https://frappe.cloud",

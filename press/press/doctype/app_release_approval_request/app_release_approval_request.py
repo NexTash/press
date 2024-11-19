@@ -112,7 +112,7 @@ class AppReleaseApprovalRequest(Document):
 
 		frappe.sendmail(
 			[publisher_email],
-			subject=f"NexTash Cloud Marketplace: {marketplace_app.title}",
+			subject=f"AmarSoft Cloud Marketplace: {marketplace_app.title}",
 			args={
 				"subject": "Update on your app release publish request",
 				"status": self.status,

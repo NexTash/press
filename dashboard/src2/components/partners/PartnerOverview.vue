@@ -81,7 +81,7 @@ export default {
 		contributions() {
 			return [
 				{
-					label: 'NexTash Cloud',
+					label: 'AmarSoft Cloud',
 					value:
 						this.$resources.partner.data
 							?.custom_ongoing_period_fc_invoice_contribution

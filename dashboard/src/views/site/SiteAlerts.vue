@@ -192,7 +192,7 @@ const marketplacePromotionalBanners = createResource({
 			v-model="showPromotionalDialog"
 			@close="e => (clickedPromotion = null)"
 			:options="{
-				title: 'NexTash Cloud Marketplace',
+				title: 'AmarSoft Cloud Marketplace',
 				actions: [
 					{
 						variant: 'solid',
