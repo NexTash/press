@@ -843,7 +843,7 @@ def user_prompts():
 	if not onboarding["complete"]:
 		return
 
-	if not doc.billing_address:
+	if frappe.session.user != "Administrator" and not doc.billing_address:
 		return [
 			"UpdateBillingDetails",
 			"Update your billing details so that we can show it in your monthly invoice.",

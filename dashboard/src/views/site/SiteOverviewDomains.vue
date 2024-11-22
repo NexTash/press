@@ -7,14 +7,14 @@
 				: 'No domains pointing to your site'
 		"
 	>
-		<template #actions>
+		<!-- <template #actions>
 			<Button
 				@click="showDialog = true"
 				:disabled="site.status === 'Suspended'"
 			>
 				Add Domain
 			</Button>
-		</template>
+		</template> -->
 		<div class="divide-y" v-if="domains.data">
 			<div v-for="d in domains.data" :key="d.name">
 				<div class="py-2">

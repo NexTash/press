@@ -2,7 +2,7 @@
 import SiteOverviewPlan from './SiteOverviewPlan.vue';
 import SiteOverviewInfo from './SiteOverviewInfo.vue';
 import SiteOverviewDomains from './SiteOverviewDomains.vue';
-import SiteOverviewCPUUsage from './SiteOverviewCPUUsage.vue';
+// import SiteOverviewCPUUsage from './SiteOverviewCPUUsage.vue';
 import SiteActivity from './SiteActivity.vue';
 
 const props = defineProps({ site: Object, plan: Object });
@@ -11,7 +11,7 @@ const props = defineProps({ site: Object, plan: Object });
 <template>
 	<div class="space-y-5" v-if="site">
 		<div class="grid grid-cols-1 gap-5 sm:grid-cols-2" v-if="site">
-			<SiteOverviewCPUUsage :site="site" />
+			<!-- <SiteOverviewCPUUsage :site="site" /> -->
 			<SiteOverviewPlan
 				:site="site"
 				:plan="plan"

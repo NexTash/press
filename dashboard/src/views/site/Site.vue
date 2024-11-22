@@ -423,7 +423,7 @@ export default {
 			let tabs = [
 				{ label: 'Overview', route: 'overview' },
 				{ label: 'Apps', route: 'apps' },
-				{ label: 'Analytics', route: 'analytics' },
+				// { label: 'Analytics', route: 'analytics' },
 				{ label: 'Monitor', route: 'monitor' },
 				{ label: 'Database', route: 'database' },
 				{ label: 'Config', route: 'site-config' },
@@ -444,7 +444,7 @@ export default {
 				Active: [
 					'Overview',
 					'Apps',
-					'Analytics',
+					// 'Analytics',
 					'Database',
 					siteConfig,
 					'Jobs',

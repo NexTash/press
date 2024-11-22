@@ -92,7 +92,7 @@
 					<ErrorMessage class="mt-2" :message="$resources.signup.error" />
 				</form>
 				<div class="flex flex-col" v-if="!hasForgotPassword">
-					<div class="-mb-2 mt-6 border-t text-center">
+					<!-- <div class="-mb-2 mt-6 border-t text-center">
 						<div class="-translate-y-1/2 transform">
 							<span
 								class="relative bg-white px-2 text-sm font-medium leading-8 text-gray-800"
@@ -100,7 +100,7 @@
 								Or continue with
 							</span>
 						</div>
-					</div>
+					</div> -->
 					<Button
 						variant="solid"
 						v-if="$resources.signupSettings.data?.enable_google_oauth === 1"
@@ -124,11 +124,11 @@
 							query: { ...$route.query, forgot: undefined }
 						}"
 					>
-						{{
+						<!-- {{
 							$route.name == 'Login'
 								? 'New member? Create a new account.'
 								: 'Already have an account? Log in.'
-						}}
+						}} -->
 					</router-link>
 				</div>
 			</div>
