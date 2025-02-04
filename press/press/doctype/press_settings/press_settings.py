@@ -73,7 +73,7 @@ class PressSettings(Document):
 			aws_secret_access_key=self.get_password(
 				"offsite_backups_secret_access_key", raise_exception=False
 			),
-			region_name="ap-south-1",
+			region_name = frappe.db.get_single_value("Press Settings", "backup_region") or "ap-south-1",
 		)
 
 	@property
