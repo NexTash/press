@@ -401,7 +401,7 @@ class DeployCandidate(Document):
 			step = find(
 				self.build_steps, lambda x: x.stage_slug == "clone" and x.step_slug == app.app
 			)
-			step.command = f"git clone {app.app} --resolve-deps"
+			step.command = f"git clone {app.app}"
 
 			if cloned:
 				step.cached = True
@@ -656,7 +656,7 @@ class DeployCandidate(Document):
 						step.output = ""
 
 						if stage_slug == "apps":
-							step.command = f"bench get-app {step_slug}"
+							step.command = f"bench get-app {step_slug} --resolve-deps"
 						steps[step_index] = step
 
 				elif step_index in steps:
