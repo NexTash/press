@@ -401,7 +401,7 @@ class DeployCandidate(Document):
 			step = find(
 				self.build_steps, lambda x: x.stage_slug == "clone" and x.step_slug == app.app
 			)
-			step.command = f"git clone {app.app}"
+			step.command = f"git clone {app.app} --resolve-deps"
 
 			if cloned:
 				step.cached = True
