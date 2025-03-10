@@ -5,9 +5,9 @@
 		</div>
 		<div class="space-y-6" v-if="$resources.versions.data">
 			<div v-if="!this.privateBench">
-				<h2 class="text-lg font-semibold">Select Frappe version</h2>
+				<h2 class="text-lg font-semibold">Select Mubtkirversion</h2>
 				<p class="text-base text-gray-700">
-					Select the Frappe version for your site
+					Select the Mubtkirversion for your site
 				</p>
 				<div class="mt-4">
 					<FormControl

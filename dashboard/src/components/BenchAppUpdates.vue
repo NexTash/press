@@ -83,7 +83,7 @@ export default {
 			handler(apps) {
 				// Hardcoded for now, need a better way
 				// to manage such dependencies (#TODO)
-				// If updating ERPNext, must update Frappe with it
+				// If updating ERPNext, must update Mubtkirwith it
 
 				let frappeApp = this.apps.filter(a => a.app == 'frappe');
 				let frappeUpdateAvailable =

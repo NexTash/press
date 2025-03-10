@@ -115,7 +115,7 @@ export default {
 				{
 					label: 'Support Included',
 					description:
-						'These plans include Frappe (OEM) Product Warranty for sites that have ERPNext, Frappe HR, and Frappe Framework apps installed.',
+						'These plans include Mubtkir(OEM) Product Warranty for sites that have ERPNext, MubtkirHR, and MubtkirFramework apps installed.',
 					plans: this.plans.filter(p => p.support_included)
 				}
 			];

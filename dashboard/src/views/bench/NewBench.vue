@@ -36,9 +36,9 @@
 					</div>
 				</div>
 				<div>
-					<label class="text-lg font-semibold"> Select a Frappe version </label>
+					<label class="text-lg font-semibold"> Select a Mubtkirversion </label>
 					<p class="text-base text-gray-700">
-						Select a Frappe version for your bench.
+						Select a Mubtkirversion for your bench.
 					</p>
 					<FormControl
 						class="mt-2"

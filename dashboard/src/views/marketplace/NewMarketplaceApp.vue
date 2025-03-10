@@ -9,7 +9,7 @@
 
 		<div v-if="app">
 			<label class="mb-3 text-base" for="version-select"
-				>Compatible Frappe Version</label
+				>Compatible MubtkirVersion</label
 			>
 			<select
 				id="version-select"

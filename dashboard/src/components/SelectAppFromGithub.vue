@@ -153,7 +153,7 @@ export default {
 					}
 				},
 				onError() {
-					// Invalid Frappe App
+					// Invalid MubtkirApp
 					if (this.$emit) this.$emit('onSelect', null);
 				}
 			};
