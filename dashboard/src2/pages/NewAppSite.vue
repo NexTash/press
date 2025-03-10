@@ -269,7 +269,7 @@ export default {
 		progressError() {
 			if (!this.siteRequest?.getProgress.data?.error) return;
 			if (this.progressErrorCount > 9) {
-				return 'An error occurred. Please contact NexTash Cloud Support.';
+				return 'An error occurred. Please contact Mubtkir Cloud Support.';
 			}
 			if (this.progressErrorCount > 4) {
 				return 'An error occurred';

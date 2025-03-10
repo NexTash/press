@@ -13,7 +13,7 @@ export default {
 	name: 'BillingOverview',
 	pageMeta() {
 		return {
-			title: 'Billing - NexTash Cloud'
+			title: 'Billing - Mubtkir Cloud'
 		};
 	},
 	props: ['invoiceName'],

@@ -95,7 +95,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: 'Security - NexTash Cloud'
+			title: 'Security - Mubtkir Cloud'
 		};
 	},
 	data() {

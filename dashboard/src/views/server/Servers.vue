@@ -185,7 +185,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: 'Servers - NexTash Cloud'
+			title: 'Servers - Mubtkir Cloud'
 		};
 	},
 	data() {
@@ -196,7 +196,7 @@ export default {
 			server_tag: '',
 			dropDownOptions: [
 				{
-					label: 'NexTash Cloud Server',
+					label: 'Mubtkir Cloud Server',
 					onClick: () => this.$router.replace('/servers/new')
 				},
 				{

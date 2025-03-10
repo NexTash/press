@@ -56,7 +56,7 @@
 					<FormControl
 						label="Preferred Payment Method"
 						type="select"
-						:options="['NexTash Cloud Credits', 'Bank Transfer', 'PayPal']"
+						:options="['Mubtkir Cloud Credits', 'Bank Transfer', 'PayPal']"
 						v-model="payoutMethod"
 					/>
 
@@ -68,7 +68,7 @@
 
 					<FormControl
 						label="GSTIN (if applicable)"
-						v-if="payoutMethod != 'NexTash Cloud Credits'"
+						v-if="payoutMethod != 'Mubtkir Cloud Credits'"
 						v-model="gstin"
 					/>
 

@@ -1,3 +1,3 @@
 <template>
-	<img src="/logo.png" alt="NexTash Logo">
+	<img src="/logo.png" alt="Mubtkir Logo">
 </template>

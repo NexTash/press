@@ -8,7 +8,7 @@
 						<span
 							class="select-none text-xl font-semibold tracking-tight text-gray-900"
 						>
-							NexTash Cloud
+							Mubtkir Cloud
 						</span>
 					</div>
 				</slot>

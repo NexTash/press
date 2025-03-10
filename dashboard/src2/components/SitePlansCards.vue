@@ -109,7 +109,7 @@ export default {
 				{
 					label: 'Basic',
 					description:
-						'Basic plan for small sites or testing purposes. Support is only available for NexTash Cloud hosting related questions and issues.',
+						'Basic plan for small sites or testing purposes. Support is only available for Mubtkir Cloud hosting related questions and issues.',
 					plans: this.plans.filter(p => !p.support_included)
 				},
 				{
