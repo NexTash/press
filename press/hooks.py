@@ -261,7 +261,6 @@ scheduler_events = {
 			"press.press.doctype.drip_email.drip_email.send_drip_emails",
 		],
 		"* * * * * 0/5": [
-			"press.test.test",
 			"press.press.doctype.agent_job.agent_job.poll_pending_jobs",
 			"press.press.doctype.press_webhook_log.press_webhook_log.process",
 			"press.press.doctype.telegram_message.telegram_message.send_telegram_message",
