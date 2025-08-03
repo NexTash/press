@@ -1956,6 +1956,8 @@ def get_trial_plan():
 @frappe.whitelist()
 def get_upload_link(file, parts=1):
 	bucket_name = frappe.db.get_single_value("Press Settings", "remote_uploads_bucket")
+	region_name = frappe.db.get_single_value("Press Settings", "backup_region")
+
 	expiration = frappe.db.get_single_value("Press Settings", "remote_link_expiry") or 3600
 	object_name = get_remote_key(file)
 	parts = int(parts)
@@ -1966,7 +1968,7 @@ def get_upload_link(file, parts=1):
 		aws_secret_access_key=get_decrypted_password(
 			"Press Settings", "Press Settings", "remote_secret_access_key"
 		),
-		region_name="ap-south-1",
+		region_name=region_name,
 	)
 	try:
 		# The response contains the presigned URL and required fields
@@ -1999,6 +2001,7 @@ def get_upload_link(file, parts=1):
 @frappe.whitelist()
 def multipart_exit(file, id, action, parts=None):
 	bucket_name = frappe.db.get_single_value("Press Settings", "remote_uploads_bucket")
+	region_name = frappe.db.get_single_value("Press Settings", "backup_region")
 	s3_client = client(
 		"s3",
 		aws_access_key_id=frappe.db.get_single_value("Press Settings", "remote_access_key_id"),
@@ -2008,7 +2011,7 @@ def multipart_exit(file, id, action, parts=None):
 			"remote_secret_access_key",
 			raise_exception=False,
 		),
-		region_name="ap-south-1",
+		region_name=region_name,
 	)
 	if action == "abort":
 		response = s3_client.abort_multipart_upload(Bucket=bucket_name, Key=file, UploadId=id)

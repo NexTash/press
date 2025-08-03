@@ -250,12 +250,14 @@ class PressSettings(Document):
 	@property
 	def boto3_offsite_backup_session(self) -> Session:
 		"""Get new preconfigured boto3 session for offsite backup provider."""
+		region_name = frappe.db.get_single_value("Press Settings", "backup_region")
+
 		return Session(
 			aws_access_key_id=self.offsite_backups_access_key_id,
 			aws_secret_access_key=self.get_password(
 				"offsite_backups_secret_access_key", raise_exception=False
 			),
-			region_name="ap-south-1",
+			region_name=region_name,
 		)
 
 	@property
