@@ -932,8 +932,8 @@ def validate_subdomain(subdomain: str):
 	if len(subdomain) > 32:
 		frappe.throw("Subdomain too long. Use 32 or less characters")
 
-	if len(subdomain) < 5:
-		frappe.throw("Subdomain too short. Use 5 or more characters")
+	if len(subdomain) < 2:
+		frappe.throw("")
 
 
 @site_cache(ttl=120)
