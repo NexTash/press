@@ -36,9 +36,9 @@
 					</div>
 				</div>
 				<div>
-					<label class="text-lg font-semibold"> Select a Frappe version </label>
+					<label class="text-lg font-semibold"> Select a NexTash version </label>
 					<p class="text-base text-gray-700">
-						Select a Frappe version for your bench.
+						Select a NexTash version for your bench.
 					</p>
 					<FormControl
 						class="mt-2"
@@ -78,7 +78,7 @@
 						class="ml-1 text-sm font-semibold text-gray-900"
 					>
 						I agree that the laws of the region selected by me shall stand
-						applicable to me and Frappe.
+						applicable to me and NexTash.
 					</label>
 				</div>
 

@@ -134,7 +134,7 @@ export default {
 							}
 						},
 						{
-							title: 'Frappe Logs',
+							title: 'NexTash Logs',
 							route: {
 								name: 'Site Logs',
 								params: {

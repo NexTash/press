@@ -41,7 +41,7 @@ export default {
 						},
 					},
 					{
-						label: 'Approval By Frappe',
+						label: 'Approval By NexTash',
 						fieldname: 'approved_by_frappe',
 						type: 'Component',
 						align: 'center',
@@ -125,7 +125,7 @@ export default {
 											}),
 											{
 												loading: 'Approving...',
-												success: 'Approval request sent to Frappe',
+												success: 'Approval request sent to NexTash',
 												error: 'Failed to Approve',
 											},
 										);
@@ -136,7 +136,7 @@ export default {
 								row.approved_by_frappe === 0
 							) {
 								return h(Badge, {
-									label: "Waiting for Frappe's approval",
+									label: "Waiting for NexTash's approval",
 									theme: 'blue',
 									variant: 'subtle',
 									size: 'md',

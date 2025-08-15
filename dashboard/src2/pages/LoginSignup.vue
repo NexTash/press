@@ -879,7 +879,7 @@ export default {
 				if (this.saasProduct) {
 					return `Get started and explore the easiest way to use ${this.saasProduct.title}`;
 				}
-				return 'Get started and explore the easiest way to use all Frappe apps';
+				return 'Get started and explore the easiest way to use all NexTash apps';
 			}
 		},
 	},

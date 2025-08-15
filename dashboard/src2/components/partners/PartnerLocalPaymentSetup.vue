@@ -46,7 +46,7 @@
 				@closeDialog="showAddPaymentGatewayDialog = false"
 			/>
 
-			<!--Submit Payment Transaction To Frappe-->
+			<!--Submit Payment Transaction To NexTash-->
 			<div class="flex flex-col gap-2 rounded-md border p-4 shadow">
 				<div class="flex justify-between items-center text-sm text-gray-700">
 					<div>Partner Payment Payout</div>

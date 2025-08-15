@@ -48,7 +48,7 @@
 									v-model="terms_accepted"
 									class="mr-0.5 py-1 align-baseline"
 								/>
-								I agree to Frappe&nbsp;
+								I agree to NexTash&nbsp;
 								<Link href="https://frappecloud.com/terms" target="_blank">
 									Terms of Service </Link
 								>,&nbsp;

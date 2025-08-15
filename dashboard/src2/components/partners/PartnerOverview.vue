@@ -173,7 +173,7 @@
 						href="https://frappe.io/partners/terms"
 						target="_blank"
 						class="underline"
-						><strong>Frappe Partnership Agreement</strong></a
+						><strong>NexTash Partnership Agreement</strong></a
 					>.
 				</p>
 			</template>

@@ -30,7 +30,7 @@
 				class="mt-4"
 				type="autocomplete"
 				label="Choose Version"
-				:options="{ doctype: 'Frappe Version', filters: { public: 1 } }"
+				:options="{ doctype: 'NexTash Version', filters: { public: 1 } }"
 				v-model="selectedVersion"
 			/>
 			<div class="mt-4 space-y-2">

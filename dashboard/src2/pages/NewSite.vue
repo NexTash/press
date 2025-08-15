@@ -52,7 +52,7 @@
 			<div v-if="!bench">
 				<div class="flex items-center justify-between">
 					<h2 class="text-base font-medium leading-6 text-gray-900">
-						Select Frappe Framework Version
+						Select NexTash Framework Version
 					</h2>
 				</div>
 				<div class="mt-2">
@@ -169,8 +169,8 @@
 					>
 						<i-lucide-badge-check class="h-4 w-8 text-gray-600" />
 						<span class="ml-4">
-							<strong>Support</strong> covers only issues of Frappe apps and not
-							functional queries. You can raise a support ticket for Frappe
+							<strong>Support</strong> covers only issues of NexTash apps and not
+							functional queries. You can raise a support ticket for NexTash
 							Cloud issues for all plans.
 						</span>
 					</div>
@@ -237,7 +237,7 @@
 				<FormControl
 					type="checkbox"
 					v-model="agreedToRegionConsent"
-					:label="`I agree that the laws of the region selected by me (${selectedClusterTitle}) shall stand applicable to me and Frappe.`"
+					:label="`I agree that the laws of the region selected by me (${selectedClusterTitle}) shall stand applicable to me and NexTash.`"
 				/>
 				<FormControl
 					class="checkbox"
@@ -715,7 +715,7 @@ export default {
 
 			return [
 				{
-					label: 'Frappe Framework Version',
+					label: 'NexTash Framework Version',
 					value: this.selectedVersion?.name,
 				},
 				{

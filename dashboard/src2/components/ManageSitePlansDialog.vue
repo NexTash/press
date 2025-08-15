@@ -33,8 +33,8 @@
 					>
 						<i-lucide-badge-check class="mr-2 h-5 w-12 text-gray-600" />
 						<span>
-							<strong>Support</strong> covers only issues of Frappe apps and not
-							functional queries. You can raise a support ticket for Frappe
+							<strong>Support</strong> covers only issues of NexTash apps and not
+							functional queries. You can raise a support ticket for NexTash
 							Cloud issues for all plans.
 						</span>
 					</div>

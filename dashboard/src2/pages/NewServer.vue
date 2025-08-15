@@ -314,7 +314,7 @@
 				<FormControl
 					type="checkbox"
 					v-model="agreedToRegionConsent"
-					:label="`I agree that the laws of the region selected by me shall stand applicable to me and Frappe.`"
+					:label="`I agree that the laws of the region selected by me shall stand applicable to me and NexTash.`"
 				/>
 				<ErrorMessage
 					class="my-2"
