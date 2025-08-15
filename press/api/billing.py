@@ -652,8 +652,8 @@ def create_razorpay_order(amount, type=None):
 		"amount": int(amount * 100),
 		"currency": team.currency,
 		"notes": {
-			"Description": "Order for Frappe Cloud Prepaid Credits",
-			"Team (Frappe Cloud ID)": team.name,
+			"Description": "Order for NexTash Cloud Prepaid Credits",
+			"Team (NexTash Cloud ID)": team.name,
 			"gst": gst_amount if team.currency == "INR" else 0,
 		},
 	}
@@ -761,7 +761,7 @@ def generate_stk_push(**kwargs):
 			callback_url=callback_url,
 			reference_code=mpesa_setup.till_number,
 			phone_number=mobile_number,
-			description="Frappe Cloud Payment",
+			description="NexTash Cloud Payment",
 		)
 		return response  # noqa: RET504
 

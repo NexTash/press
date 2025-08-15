@@ -1625,7 +1625,7 @@ def validate_restoration_space_requirements(
 
 	if server.public:
 		"""
-		If it's a public server, Frappe Cloud will auto extend the disk space
+		If it's a public server, NexTash Cloud will auto extend the disk space
 		to accommodate the restoration.
 		"""
 		allowed_to_upload = True
@@ -1793,7 +1793,7 @@ def check_domain_proxied(domain) -> str | None:
 	except requests.exceptions.RequestException as e:
 		frappe.throw("Unable to connect to the domain. Is the DNS correct?\n\n" + str(e))
 	else:
-		if (server := res.headers.get("server")) not in ("Frappe Cloud", None):  # eg: cloudflare
+		if (server := res.headers.get("server")) not in ("NexTash Cloud", None):  # eg: cloudflare
 			return server
 
 

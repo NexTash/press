@@ -191,7 +191,7 @@ class Cluster(Document):
 
 			# Create the network (VPC) on Hetzner
 			network = client.networks.create(
-				name=f"Frappe Cloud - {self.name}",
+				name=f"NexTash Cloud - {self.name}",
 				ip_range=self.cidr_block,  # The IP range for the entire network (CIDR)
 				subnets=subnets,
 				routes=[],
@@ -271,7 +271,7 @@ class Cluster(Document):
 			TagSpecifications=[
 				{
 					"ResourceType": "vpc",
-					"Tags": [{"Key": "Name", "Value": f"Frappe Cloud - {self.name}"}],
+					"Tags": [{"Key": "Name", "Value": f"NexTash Cloud - {self.name}"}],
 				},
 			],
 			CidrBlock=self.cidr_block,
@@ -287,7 +287,7 @@ class Cluster(Document):
 					"Tags": [
 						{
 							"Key": "Name",
-							"Value": f"Frappe Cloud - {self.name} - Public Subnet",
+							"Value": f"NexTash Cloud - {self.name} - Public Subnet",
 						}
 					],
 				},
@@ -305,7 +305,7 @@ class Cluster(Document):
 					"Tags": [
 						{
 							"Key": "Name",
-							"Value": f"Frappe Cloud - {self.name} - Internet Gateway",
+							"Value": f"NexTash Cloud - {self.name} - Internet Gateway",
 						},
 					],
 				},
@@ -329,7 +329,7 @@ class Cluster(Document):
 
 		client.create_tags(
 			Resources=[self.route_table_id],
-			Tags=[{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Route Table"}],
+			Tags=[{"Key": "Name", "Value": f"NexTash Cloud - {self.name} - Route Table"}],
 		)
 
 		response = client.describe_network_acls(
@@ -338,11 +338,11 @@ class Cluster(Document):
 		self.network_acl_id = response["NetworkAcls"][0]["NetworkAclId"]
 		client.create_tags(
 			Resources=[self.network_acl_id],
-			Tags=[{"Key": "Name", "Value": f"Frappe Cloud - {self.name} - Network ACL"}],
+			Tags=[{"Key": "Name", "Value": f"NexTash Cloud - {self.name} - Network ACL"}],
 		)
 
 		response = client.create_security_group(
-			GroupName=f"Frappe Cloud - {self.name} - Security Group",
+			GroupName=f"NexTash Cloud - {self.name} - Security Group",
 			Description="Allow Everything",
 			VpcId=self.vpc_id,
 			TagSpecifications=[
@@ -351,7 +351,7 @@ class Cluster(Document):
 					"Tags": [
 						{
 							"Key": "Name",
-							"Value": f"Frappe Cloud - {self.name} - Security Group",
+							"Value": f"NexTash Cloud - {self.name} - Security Group",
 						},
 					],
 				},
@@ -436,7 +436,7 @@ class Cluster(Document):
 			aws_secret_access_key=self.get_password("aws_secret_access_key"),
 		)
 		response = client.create_security_group(
-			GroupName=f"Frappe Cloud - {self.name} - Proxy - Security Group",
+			GroupName=f"NexTash Cloud - {self.name} - Proxy - Security Group",
 			Description="Allow Everything on Proxy",
 			VpcId=self.vpc_id,
 			TagSpecifications=[
@@ -445,7 +445,7 @@ class Cluster(Document):
 					"Tags": [
 						{
 							"Key": "Name",
-							"Value": f"Frappe Cloud - {self.name} - Proxy - Security Group",
+							"Value": f"NexTash Cloud - {self.name} - Proxy - Security Group",
 						},
 					],
 				},
@@ -512,7 +512,7 @@ class Cluster(Document):
 		vcn = vcn_client.create_vcn(
 			CreateVcnDetails(
 				compartment_id=self.oci_tenancy,
-				display_name=f"Frappe Cloud - {self.name}",
+				display_name=f"NexTash Cloud - {self.name}",
 				cidr_block=self.subnet_cidr_block,
 			)
 		).data
@@ -528,7 +528,7 @@ class Cluster(Document):
 		security_group = vcn_client.create_network_security_group(
 			CreateNetworkSecurityGroupDetails(
 				compartment_id=self.oci_tenancy,
-				display_name=f"Frappe Cloud - {self.name} - Security Group",
+				display_name=f"NexTash Cloud - {self.name} - Security Group",
 				vcn_id=self.vpc_id,
 			)
 		).data
@@ -595,7 +595,7 @@ class Cluster(Document):
 		proxy_security_group = vcn_client.create_network_security_group(
 			CreateNetworkSecurityGroupDetails(
 				compartment_id=self.oci_tenancy,
-				display_name=f"Frappe Cloud - {self.name} - Proxy - Security Group",
+				display_name=f"NexTash Cloud - {self.name} - Proxy - Security Group",
 				vcn_id=self.vpc_id,
 			)
 		).data
@@ -634,7 +634,7 @@ class Cluster(Document):
 		subnet = vcn_client.create_subnet(
 			CreateSubnetDetails(
 				compartment_id=self.oci_tenancy,
-				display_name=f"Frappe Cloud - {self.name} - Public Subnet",
+				display_name=f"NexTash Cloud - {self.name} - Public Subnet",
 				vcn_id=self.vpc_id,
 				cidr_block=self.subnet_cidr_block,
 				route_table_id=self.route_table_id,
@@ -648,7 +648,7 @@ class Cluster(Document):
 		internet_gateway = vcn_client.create_internet_gateway(
 			CreateInternetGatewayDetails(
 				compartment_id=self.oci_tenancy,
-				display_name=f"Frappe Cloud - {self.name} - Internet Gateway",
+				display_name=f"NexTash Cloud - {self.name} - Internet Gateway",
 				is_enabled=True,
 				vcn_id=self.vpc_id,
 			)

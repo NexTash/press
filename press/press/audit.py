@@ -1,4 +1,4 @@
-"""Functions for automated audit of frappe cloud systems."""
+"""Functions for automated audit of NexTash Cloud systems."""
 
 from __future__ import annotations
 

@@ -16,15 +16,15 @@ func main() {
 			fmt.Println("An unexpected error occurred:", r)
 			fmt.Println("Please try again or contact support if the issue persists.")
 		} else {
-			fmt.Println("\n\nThank you for using Frappe Cloud Restore CLI!")
+			fmt.Println("\n\nThank you for using NexTash Cloud Restore CLI!")
 			fmt.Println("Exiting in 5 seconds...")
 			time.Sleep(5 * time.Second)
 		}
 	}()
 	session := GetSession()
 	loginRequired := true
-	fmt.Println("Welcome to Frappe Cloud Restore CLI")
-	fmt.Println("This CLI will help you restore your site on Frappe Cloud")
+	fmt.Println("Welcome to NexTash Cloud Restore CLI")
+	fmt.Println("This CLI will help you restore your site on NexTash Cloud")
 	fmt.Print("\n\n")
 	time.Sleep(1 * time.Second)
 
@@ -48,7 +48,7 @@ func main() {
 
 	// Prompt user to log in
 	if loginRequired {
-		email, err := tui.AskInput("Enter your email address to login to Frappe Cloud", "")
+		email, err := tui.AskInput("Enter your email address to login to NexTash Cloud", "")
 		if err != nil {
 			fmt.Println("Error asking for email: " + err.Error())
 			return
@@ -341,7 +341,7 @@ func main() {
 		spinner.Done()
 		time.Sleep(1 * time.Second)
 		fmt.Println("Site restoration triggered successfully!")
-		fmt.Println("You can check the status of the restoration in your Frappe Cloud dashboard.")
+		fmt.Println("You can check the status of the restoration in your NexTash Cloud dashboard.")
 		fmt.Printf("%s/dashboard/sites/%s/insights/jobs\n", session.Server, selectedSite)
 		if isDatabaseGettingRestored {
 			fmt.Println()

@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.7"
 license = { text = "MIT" }
 authors = [
-  { name = "Frappe Cloud", email = "cloud@frappe.io" }
+  { name = "NexTash Cloud", email = "cloud@frappe.io" }
 ]
 dependencies = [
   "duckdb==1.2.2"

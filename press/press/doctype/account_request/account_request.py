@@ -170,7 +170,7 @@ class AccountRequest(Document):
 			print()
 			return
 
-		subject = f"{self.otp} - OTP for Frappe Cloud Account Verification"
+		subject = f"{self.otp} - OTP for NexTash Cloud Account Verification"
 		args = {}
 		sender = ""
 
@@ -200,7 +200,7 @@ class AccountRequest(Document):
 			template = "verify_account"
 
 			if self.invited_by and self.role != "Press Admin":
-				subject = f"You are invited by {self.invited_by} to join Frappe Cloud"
+				subject = f"You are invited by {self.invited_by} to join NexTash Cloud"
 				template = "invite_team_member"
 
 		args.update(
@@ -251,10 +251,10 @@ class AccountRequest(Document):
 
 		if for_login:
 			template = "login_otp"
-			subject = f"{self.otp} - OTP for Frappe Cloud Login"
+			subject = f"{self.otp} - OTP for NexTash Cloud Login"
 		else:
 			template = "2fa_recovery_codes_otp"
-			subject = f"{self.otp} - OTP to view 2FA recovery codes for Frappe Cloud"
+			subject = f"{self.otp} - OTP to view 2FA recovery codes for NexTash Cloud"
 
 		args = {
 			"otp": self.otp,

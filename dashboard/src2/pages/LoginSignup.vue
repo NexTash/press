@@ -869,7 +869,7 @@ export default {
 					return `Sign up to create your ${this.saasProduct.title} site`;
 				}
 
-				return 'Create your Frappe Cloud account';
+				return 'Create your NexTash Cloud account';
 			}
 		},
 		subtitle() {

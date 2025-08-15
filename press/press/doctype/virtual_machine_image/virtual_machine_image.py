@@ -66,7 +66,7 @@ class VirtualMachineImage(Document):
 			volumes = self.get_volumes_from_virtual_machine()
 			response = self.client.create_image(
 				InstanceId=self.instance_id,
-				Name=f"Frappe Cloud {self.name} - {self.virtual_machine}",
+				Name=f"NexTash Cloud {self.name} - {self.virtual_machine}",
 				BlockDeviceMappings=volumes,
 			)
 			self.image_id = response["ImageId"]
@@ -86,7 +86,7 @@ class VirtualMachineImage(Document):
 			image = self.client.create_image(
 				CreateImageDetails(
 					compartment_id=cluster.oci_tenancy,
-					display_name=f"Frappe Cloud {self.name} - {self.virtual_machine}",
+					display_name=f"NexTash Cloud {self.name} - {self.virtual_machine}",
 					**instance_details,
 					**object_storage_details,
 				)
@@ -97,7 +97,7 @@ class VirtualMachineImage(Document):
 	def create_image_from_copy(self):
 		source = frappe.get_doc("Virtual Machine Image", self.copied_from)
 		response = self.client.copy_image(
-			Name=f"Frappe Cloud {self.name} - {self.virtual_machine}",
+			Name=f"NexTash Cloud {self.name} - {self.virtual_machine}",
 			SourceImageId=source.image_id,
 			SourceRegion=source.region,
 		)

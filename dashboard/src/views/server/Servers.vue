@@ -185,7 +185,7 @@ export default {
 	},
 	pageMeta() {
 		return {
-			title: 'Servers - Frappe Cloud'
+			title: 'Servers - NexTash Cloud'
 		};
 	},
 	data() {
@@ -196,7 +196,7 @@ export default {
 			server_tag: '',
 			dropDownOptions: [
 				{
-					label: 'Frappe Cloud Server',
+					label: 'NexTash Cloud Server',
 					onClick: () => this.$router.replace('/servers/new')
 				},
 				{
