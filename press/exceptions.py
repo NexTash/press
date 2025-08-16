@@ -45,6 +45,10 @@ class SiteAlreadyArchived(ValidationError):
 	pass
 
 
+class SiteTooManyPendingBackups(ValidationError):
+	pass
+
+
 class InactiveDomains(ValidationError):
 	pass
 
@@ -78,4 +82,12 @@ class MultipleCNAMERecords(DNSValidationError):
 
 
 class TLSRetryLimitExceeded(ValidationError):
+	pass
+
+
+class ArchiveBenchError(ValidationError):
+	pass
+
+
+class MonitorServerDown(ValidationError):
 	pass

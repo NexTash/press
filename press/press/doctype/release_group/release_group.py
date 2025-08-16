@@ -662,7 +662,6 @@ class ReleaseGroup(Document, TagHelpers):
 					}
 				)
 			else:
-				# Either we don't want to update the app or there's no update available
 				if last_deployed_bench:
 					# Find the last deployed release and use it
 					app_to_keep = find(last_deployed_bench.apps, lambda x: x.app == app.app)
@@ -1277,15 +1276,14 @@ class ReleaseGroup(Document, TagHelpers):
 	def add_cluster(self, cluster: str):
 		"""
 		Add new server belonging to cluster.
-
-		Deploys bench if no update available
 		"""
 		server = Server.get_prod_for_new_bench({"cluster": cluster})
+
 		if not server:
 			log_error("No suitable server for new bench")
 			frappe.throw(f"No suitable server for new bench in {cluster}")
-		app_update_available = self.deploy_information().update_available
-		self.add_server(server, deploy=not app_update_available)
+
+		self.add_server(server, deploy=True)
 
 	def get_last_successful_candidate_build(self, platform: str | None = None) -> DeployCandidateBuild | None:
 		try:
@@ -1304,7 +1302,7 @@ class ReleaseGroup(Document, TagHelpers):
 			return None
 
 	@frappe.whitelist()
-	def add_server(self, server: str, deploy=False):
+	def add_server(self, server: str, deploy=False, force_new_build: bool = False):
 		if not deploy:
 			return None
 
@@ -1313,7 +1311,7 @@ class ReleaseGroup(Document, TagHelpers):
 			platform=server_platform
 		)
 
-		if not last_successful_deploy_candidate_build:
+		if not last_successful_deploy_candidate_build or force_new_build:
 			# No build of this platform is available creating new build
 			last_candidate_build = self.get_last_successful_candidate_build()
 
