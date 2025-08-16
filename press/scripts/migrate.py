@@ -530,7 +530,7 @@ def main():
 		atexit.register(cleanup, current_file)
 
 	frappe_provider = click.prompt(
-		"Frappe provider (default: frappecloud.com)", default="frappecloud.com"
+		"Frappe provider (default: nextash.cloud)", default="nextash.cloud"
 	)
 
 	restore_choice = click.prompt(

@@ -233,16 +233,16 @@ export default {
 								);
 					},
 				},
-				{
-					label: 'Repository',
-					key: 'repo',
-					class: 'text-gray-600',
-					width: '15rem',
-					format(value, row) {
-						if (!row.sources.length) return value;
-						return `${row.source.repository_owner}/${row.source.repository}`;
-					},
-				},
+				//{
+				//	label: 'Repository',
+				//	key: 'repo',
+				//	class: 'text-gray-600',
+				//	width: '15rem',
+				//	format(value, row) {
+				//		if (!row.sources.length) return value;
+				//		return `${row.source.repository_owner}/${row.source.repository}`;
+				//	},
+				//},
 				{
 					label: 'Branch',
 					type: 'select',

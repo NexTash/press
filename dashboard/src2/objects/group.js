@@ -471,6 +471,13 @@ export default {
 						{
 							label: 'Apps',
 							format(value, row) {
+								for (const i in row.apps) {
+									console.log(row.apps[i]);
+									
+									if (row.apps[i] === 'frappe') {
+										row.apps[i] = 'alpha';
+									}
+								}
 								return (row.apps || []).join(', ');
 							},
 							width: '20rem',

@@ -277,7 +277,7 @@ const paymentModeOptions = [
 							h(
 								'a',
 								{
-									href: 'https://frappecloud.com/payment-options',
+									href: 'https://nextash.cloud/payment-options',
 									target: '_blank',
 								},
 								'Alternate Payment Methods',

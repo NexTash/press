@@ -299,7 +299,7 @@
 								</span>
 								<a
 									class="text-base font-normal text-gray-900 underline hover:text-gray-700"
-									href="https://frappecloud.com/policies"
+									href="https://nextash.cloud/policies"
 								>
 									Terms & Policies
 								</a>
@@ -381,7 +381,7 @@
 								</span>
 								<a
 									class="text-base font-normal text-gray-900 underline hover:text-gray-700"
-									href="https://frappecloud.com/policies"
+									href="https://nextash.cloud/policies"
 								>
 									Terms & Policies
 								</a>

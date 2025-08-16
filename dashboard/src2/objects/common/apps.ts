@@ -104,21 +104,21 @@ function getAppsTabColumns(forSite: boolean) {
 				else return 'Free';
 			},
 		},
-		{
-			label: 'Repository',
-			fieldname: 'repository_url',
-			format: (value) => String(value).split('/').slice(-2).join('/'),
-			link: (value) => String(value),
-		},
-		{
-			label: 'Branch',
-			fieldname: 'branch',
-			type: 'Badge',
-			width: 1,
-			link: (value, row) => {
-				return `${row.repository_url}/tree/${value}`;
-			},
-		},
+		// {
+		// 	label: 'Repository',
+		// 	fieldname: 'repository_url',
+		// 	format: (value) => String(value).split('/').slice(-2).join('/'),
+		// 	link: (value) => String(value),
+		// },
+		// {
+		// 	label: 'Branch',
+		// 	fieldname: 'branch',
+		// 	type: 'Badge',
+		// 	width: 1,
+		// 	link: (value, row) => {
+		// 		return `${row.repository_url}/tree/${value}`;
+		// 	},
+		// },
 		{
 			label: 'Commit',
 			fieldname: 'hash',
@@ -131,11 +131,11 @@ function getAppsTabColumns(forSite: boolean) {
 				return String(value).slice(0, 7);
 			},
 		},
-		{
-			label: 'Commit Message',
-			fieldname: 'commit_message',
-			width: '30rem',
-		},
+		// {
+		// 	label: 'Commit Message',
+		// 	fieldname: 'commit_message',
+		// 	width: '30rem',
+		// },
 	];
 
 	if (forSite) return appTabColumns;
@@ -150,7 +150,7 @@ const siteAppListOptions: Partial<TabList> = {
 	},
 	banner({ documentResource: site }) {
 		const bannerTitle =
-			'Your site is currently on a shared bench group. Upgrade plan to install custom apps, enable server scripts and <a href="https://frappecloud.com/shared-hosting#benches" class="underline" target="_blank">more</a>.';
+			'Your site is currently on a shared bench group. Upgrade plan to install custom apps, enable server scripts and <a href="https://nextash.cloud/shared-hosting#benches" class="underline" target="_blank">more</a>.';
 
 		return getUpsellBanner(site, bannerTitle);
 	},

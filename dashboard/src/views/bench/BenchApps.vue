@@ -43,7 +43,7 @@
 									placement="top"
 								>
 									<a
-										href="https://frappecloud.com/docs/faq/app-installation-issue"
+										href="https://nextash.cloud/docs/faq/app-installation-issue"
 										target="_blank"
 									>
 										<FeatherIcon

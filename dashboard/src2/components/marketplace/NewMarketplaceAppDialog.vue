@@ -42,7 +42,7 @@
 					Validating app...
 				</div>
 				<div v-if="appValidated" class="flex text-base text-gray-700">
-					<div v-if="this.app.is_public === true" class="flex gap-1">
+					<div class="flex gap-1">
 						<FeatherIcon
 							class="w-4 p-0.5 text-white rounded bg-green-500"
 							name="check"
@@ -50,22 +50,6 @@
 						/>
 						Found {{ this.app.title }} ({{ this.app.name }})
 					</div>
-					<div v-else-if="this.app.is_public === false">
-						<div class="flex text-base text-gray-700 gap-1">
-							<FeatherIcon
-								class="w-4 p-0.5 text-white rounded bg-red-500"
-								name="x"
-							/>
-							The Github Repository is private.
-							<Link
-								href="https://frappecloud.com/marketplace/terms"
-								class="font-medium"
-							>
-								Terms and Policy
-							</Link>
-						</div>
-					</div>
-					<div v-else class="h-4"></div>
 				</div>
 			</div>
 			<ErrorMessage :message="$resources.validateApp.error" />

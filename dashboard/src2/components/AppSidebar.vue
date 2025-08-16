@@ -17,11 +17,11 @@
 						icon: 'help-circle',
 						onClick: support
 					},
-					{
-						label: 'Share Feedback',
-						icon: 'file-text',
-						onClick: feedback
-					},
+					//{
+					//	label: 'Share Feedback',
+					//	icon: 'file-text',
+					//	onClick: feedback
+					//},
 					{
 						label: 'Logout',
 						icon: 'log-out',
@@ -95,11 +95,11 @@ export default {
 	},
 	methods: {
 		support() {
-			window.open('https://frappecloud.com/support', '_blank');
+			window.open('https://support.nextash.com/helpdesk', '_blank');
 		},
 		feedback() {
 			window.open(
-				'https://frappecloud.com/frappe-cloud-feedback/new',
+				'https://nextash.cloud/frappe-cloud-feedback/new',
 				'_blank'
 			);
 		}

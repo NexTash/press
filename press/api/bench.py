@@ -663,8 +663,15 @@ def get_processes(name):
 	bench: "Bench" = frappe.get_doc("Bench", name)
 	if bench.status != "Active" and bench.status != "Broken":
 		return []
+		
+	processes = bench.supervisorctl_status()
+	
+	for row in processes:
+		row["name"] = row["name"].replace(f"frappe", "alpha")
+		row["group"] = row.get("group", "").replace("frappe", "alpha")
+		row["program"] = row["program"].replace("frappe", "alpha")
 
-	return bench.supervisorctl_status()
+	return processes
 
 
 @frappe.whitelist()
@@ -981,7 +988,11 @@ def logs(name, bench):
 		return []
 
 	try:
-		return frappe.get_doc("Bench", bench).server_logs
+		logs = frappe.get_doc("Bench", bench).server_logs
+		for row in logs:
+			row["name"] = row["name"].replace(f"frappe", "alpha")
+		
+		return logs
 	except AgentRequestSkippedException:
 		return []
 
