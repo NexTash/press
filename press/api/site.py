@@ -1793,7 +1793,7 @@ def check_domain_proxied(domain) -> str | None:
 	except requests.exceptions.RequestException as e:
 		frappe.throw("Unable to connect to the domain. Is the DNS correct?\n\n" + str(e))
 	else:
-		if (server := res.headers.get("server")) not in ("NexTash Cloud", None):  # eg: cloudflare
+		if (server := res.headers.get("server")) not in ("Frappe Cloud", None):  # eg: cloudflare
 			return server
 
 
